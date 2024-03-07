@@ -1,4 +1,19 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 export const Footer = () => {
+  const [date, setDate] = useState(new Date());
+
+  const getCurrentYear = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    return year;
+  };
+
+  useEffect(() => {
+    setDate(getCurrentYear());
+  }, []);
+
   return (
     <div className='footer'>
       <div className='footer-upper'>
@@ -12,38 +27,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className='footer-lower'>
-        <div className='footer-lower-container'>
-          <h3>Company</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
+        © 2024 - {date} Uros Relic - All Rights Reserved.
       </div>
     </div>
   );
