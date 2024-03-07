@@ -12,38 +12,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className='footer-lower'>
-        <div className='footer-lower-container'>
-          <h3>Company</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
-        <div className='footer-lower-container'>
-          <h3>Social</h3>
-          <div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-            <div className='footer-item'>Item</div>
-          </div>
-        </div>
+        © 2024 Uros Relic - All Rights Reserved.
       </div>
     </div>
   );

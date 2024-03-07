@@ -238,23 +238,12 @@ body {
 }
 
 .footer-lower {
+  padding: 0.5rem;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.footer-lower-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
   align-items: center;
-  padding: 0.5rem 1rem;
-  width: 25%;
-}
-.footer-lower-container div {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  background-color: #101a1f;
 }
 
 /** Media queries */
