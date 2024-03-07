@@ -5,12 +5,15 @@ import { IoMdClose } from 'react-icons/io';
 export const Sidebar = ({ isOpen, onClose }) => {
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-      <div className='sidebar-close-btn'>
-        <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
-      </div>
       <div className='sidebar-content'>
-        <NavItem name={'Home'} url={'/'} />
-        <NavItem name={'Books'} url={'/books'} />
+        <div className='sidebar-close-btn'>
+          <h1 className='sidebar-title'>
+            Book<span>store</span>
+          </h1>
+          <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
+        </div>
+        <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
+        <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
       </div>
     </div>
   );

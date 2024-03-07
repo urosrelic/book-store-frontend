@@ -24,18 +24,21 @@ export const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <h1>
+      <h1 className='navbar-title'>
         Book<span>store</span>
       </h1>
+
       {/* Render links only on wide screens */}
       {isWideScreen && (
         <div className='navbar-links'>
           <NavItem name={'Books'} url={'/books'} />
         </div>
-      )}{' '}
+      )}
+
       <div className='hamburger-menu' onClick={toggleSidebar}>
         <IoMdMenu />
       </div>
+
       {!isWideScreen && (
         <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       )}
