@@ -31,6 +31,8 @@ export const Navbar = () => {
       {/* Render links only on wide screens */}
       {isWideScreen && (
         <div className='navbar-links'>
+          <NavItem name={'Home'} url={'/'} />
+
           <NavItem name={'Books'} url={'/books'} />
         </div>
       )}
