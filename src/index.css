@@ -204,9 +204,57 @@ body {
   justify-content: center;
   color: #def2f1;
   width: 100%;
-  height: 100px;
   margin-top: auto;
   background-color: #17242a;
+}
+
+.footer-upper {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-site-logo {
+  width: 50%;
+}
+
+.footer-site-logo img {
+  width: 100%;
+}
+
+.footer-media-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.footer-media-links img {
+  margin: 0 0.4rem;
+  width: 16%;
+}
+
+.footer-lower {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-lower-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  width: 25%;
+}
+.footer-lower-container div {
+  display: flex;
+  flex-direction: column;
 }
 
 /** Media queries */
