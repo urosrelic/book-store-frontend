@@ -32,7 +32,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.navbar.sticky {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: #17242a;
+}
+
+.navbar.sticky span {
+  color: #3aafa9;
+  transition: color 0.3s ease-in-out;
+}
+
 .navbar-title {
   color: #def2f1;
 }

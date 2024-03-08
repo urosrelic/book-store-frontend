@@ -4,6 +4,7 @@ import { Sidebar } from './Sidebar';
 import { NavItem } from './NavItem';
 
 export const Navbar = () => {
+  const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
 
@@ -16,14 +17,20 @@ export const Navbar = () => {
       setIsWideScreen(window.innerWidth >= 1200);
     };
 
+    const handleScroll = () => {
+      setSticky(window.scrollY >= 20);
+    };
+
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className='navbar'>
+    <div className={sticky ? 'navbar sticky' : 'navbar'}>
       <h1 className='navbar-title'>
         Book<span>store</span>
       </h1>
