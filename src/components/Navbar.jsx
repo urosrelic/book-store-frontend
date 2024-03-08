@@ -5,7 +5,7 @@ import { NavItem } from './NavItem';
 
 export const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1000);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
