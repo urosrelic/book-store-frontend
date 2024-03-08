@@ -199,11 +199,11 @@ body {
   height: 100%;
   border: 1px solid 2b7a77;
   border-radius: 15px;
-  background-color: #2b7a77;
   color: #def2f1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: center;
 }
 
 .book-title,
@@ -216,11 +216,9 @@ body {
   color: #17242a;
   font-size: 2rem;
   font-weight: bold;
-  text-align: center;
 }
 
 .book-author {
-  text-align: center;
   font-size: 1.5rem;
 }
 
