@@ -16,7 +16,9 @@ export const Book = ({
       <span className='book-title'>{title}</span>
       <span className='book-author'>{authors}</span>
       <span className='book-categories'>Genres: {genres}</span>
-      <img src={image_url} />
+      <div className='book-image'>
+        <img src={image_url} />
+      </div>
     </div>
   );
 };
