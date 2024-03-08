@@ -13,12 +13,12 @@ export const Book = ({
 }) => {
   return (
     <div className='book'>
-      <span className='book-title'>{title}</span>
-      <span className='book-author'>{authors}</span>
-      <span className='book-categories'>Genres: {genres}</span>
       <div className='book-image'>
         <img src={image_url} />
       </div>
+      <span className='book-title'>{title}</span>
+      <span className='book-author'>{authors}</span>
+      <span className='book-categories'>Genres: {genres}</span>
     </div>
   );
 };
