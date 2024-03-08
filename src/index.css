@@ -296,6 +296,10 @@ body {
     display: none; /* Hide the hamburger menu on larger screens */
   }
 
+  .book-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .nav-item {
     margin: 0 1rem;
     width: 150px;
