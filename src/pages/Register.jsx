@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 export const Register = () => {
   const schema = Yup.object().shape({
@@ -25,9 +26,21 @@ export const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    // Handle registration logic or send data to the backend
-    console.log('Registration data:', data);
+  const onSubmit = async (data) => {
+    console.log(data);
+
+    try {
+      const response = await axios.post('/api/users', data);
+      if (response.status === 201) {
+        console.log('User registered successfully');
+        // Optionally, you can redirect the user to another page or perform other actions
+      } else {
+        console.error('Failed to register user');
+        // Handle the error, show a message to the user, etc.
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
