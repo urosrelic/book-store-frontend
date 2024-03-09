@@ -39,8 +39,8 @@ export const Navbar = () => {
       {isWideScreen && (
         <div className='navbar-links'>
           <NavItem name={'Home'} url={'/'} />
-
           <NavItem name={'Books'} url={'/books'} />
+          <NavItem name={'Register'} url={'/register'} />
         </div>
       )}
 

@@ -14,6 +14,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </div>
         <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
         <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
+        <NavItem name={'Register'} url={'/register'} closeSidebar={onClose} />
       </div>
     </div>
   );
