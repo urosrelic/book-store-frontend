@@ -6,7 +6,7 @@ export const Home = () => {
         Books.
       </div>
       <div className='home-image'>
-        <img src='/public/hero_image.png' />
+        <img src='/hero_image.png' />
       </div>
       <p className='home-paragraph'>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
