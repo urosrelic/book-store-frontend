@@ -299,6 +299,23 @@ body {
   background-color: #101a1f;
 }
 
+/** REGISTER */
+.register-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  color: red;
+}
+
 /** Media queries */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
