@@ -41,6 +41,7 @@ export const Navbar = () => {
           <NavItem name={'Home'} url={'/'} />
           <NavItem name={'Books'} url={'/books'} />
           <NavItem name={'Register'} url={'/register'} />
+          <NavItem name={'Login'} url={'/login'} />
         </div>
       )}
 
