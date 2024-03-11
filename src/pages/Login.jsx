@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField';
 import { Button } from '../components/Button/Button';
+import { useNavigate } from 'react-router-dom'; // Import the useHistory hook
 
 export const Login = ({
   isAuthenticated,
@@ -14,7 +14,7 @@ export const Login = ({
     password: '',
   });
   const [errors, setErrors] = useState({});
-  const history = useHistory();
+  const navigate = useNavigate(); // Initialize useHistory hook
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
@@ -55,9 +55,9 @@ export const Login = ({
 
         if (response.status === 200) {
           console.log('User logged in successfully');
-          // Optionally, you can redirect the user to another page or perform other actions
           setIsAuthenticated(true);
           setCurrentUser(response.data);
+          navigate('/'); // Redirect to '/' after successful login
         } else {
           console.error('Incorrect username or password');
         }
