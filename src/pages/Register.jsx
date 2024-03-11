@@ -1,86 +1,122 @@
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { InputField } from '../components/InputField/InputField';
 
 export const Register = () => {
-  const schema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    password: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(16, 'Password must be less than 16 characters')
-      .required('Password is required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm Password is required'),
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const [errors, setErrors] = useState({});
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const handleInputChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    try {
-      const response = await axios.post('/api/users', data);
-      if (response.status === 201) {
-        console.log('User registered successfully');
-        // Optionally, you can redirect the user to another page or perform other actions
-      } else {
-        console.error('Failed to register user');
-        // Handle the error, show a message to the user, etc.
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Invalid email address';
+    }
+
+    if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords must match';
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0; // Return true if there are no errors
+  };
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    if (validateForm()) {
+      try {
+        const response = await axios.post('/api/users', formData);
+        if (response.status === 201) {
+          console.log('User registered successfully');
+          // Optionally, you can redirect the user to another page or perform other actions
+        } else {
+          console.error('Failed to register user');
+          // Handle the error, show a message to the user, etc.
+        }
+      } catch (error) {
+        console.error('Error:', error);
       }
-    } catch (error) {
-      console.error('Error:', error);
     }
   };
 
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   return (
     <div className='register-container'>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='form-control'>
-          <label>Username:</label>
-          <input type='text' name='username' {...register('username')} />
-          {errors.username && (
-            <div className='error-message'>{errors.username.message}</div>
-          )}
-        </div>
-        <div className='form-control'>
-          <label>Email:</label>
-          <input type='text' name='email' {...register('email')} />
-          {errors.email && (
-            <div className='error-message'>{errors.email.message}</div>
-          )}
-        </div>
-        <div className='form-control'>
-          <label>Password:</label>
-          <input type='password' name='password' {...register('password')} />
-          {errors.password && (
-            <div className='error-message'>{errors.password.message}</div>
-          )}
-        </div>
-        <div className='form-control'>
-          <label>Confirm Password:</label>
-          <input
-            type='password'
-            name='confirmPassword'
-            {...register('confirmPassword')}
-          />
-          {errors.confirmPassword && (
-            <div className='error-message'>
-              {errors.confirmPassword.message}
-            </div>
-          )}
-        </div>
+      <form id='register-form' onSubmit={onSubmit}>
+        <InputField
+          id='username-input'
+          labelName='Username'
+          name='username'
+          type='text'
+          value={formData.username}
+          onChange={handleInputChange}
+          errorMessage={errors.username}
+        />
+
+        <InputField
+          id='email-input'
+          labelName='Email'
+          name='email'
+          type='text'
+          value={formData.email}
+          onChange={handleInputChange}
+          errorMessage={errors.email}
+        />
+
+        <InputField
+          id='password-input'
+          labelName='Password'
+          name='password'
+          type='password'
+          value={formData.password}
+          onChange={handleInputChange}
+          errorMessage={errors.password}
+        />
+
+        <InputField
+          id='confirm-password-input'
+          labelName='Confirm Password'
+          name='confirmPassword'
+          type='password'
+          value={formData.confirmPassword}
+          onChange={handleInputChange}
+          errorMessage={errors.confirmPassword}
+        />
+
         <button type='submit'>Register</button>
       </form>
     </div>
