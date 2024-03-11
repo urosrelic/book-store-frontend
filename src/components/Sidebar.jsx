@@ -1,8 +1,20 @@
 /* eslint-disable react/prop-types */
 import { NavItem } from './NavItem';
 import { IoMdClose } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 
-export const Sidebar = ({ isOpen, onClose, isAuthenticated, currentUser }) => {
+export const Sidebar = ({
+  isOpen,
+  onClose,
+  isAuthenticated,
+  setIsAuthenticated,
+  currentUser,
+}) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    navigate('/');
+  };
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
@@ -14,7 +26,12 @@ export const Sidebar = ({ isOpen, onClose, isAuthenticated, currentUser }) => {
         </div>
 
         {/* Conditionally render User Details */}
-        {isAuthenticated && <>{'Welcome back: ' + currentUser.username}</>}
+        {isAuthenticated && (
+          <>
+            {/* // TODO instead of a welcome text render dashboard */}
+            {'Welcome back: ' + currentUser.username}
+          </>
+        )}
 
         {/* Always show */}
         <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
@@ -31,7 +48,16 @@ export const Sidebar = ({ isOpen, onClose, isAuthenticated, currentUser }) => {
             <NavItem name={'Login'} url={'/login'} closeSidebar={onClose} />
           </>
         )}
-        {isAuthenticated && <>{}</>}
+        {isAuthenticated && (
+          <>
+            {' '}
+            <NavItem
+              name={'Logout'}
+              closeSidebar={onClose}
+              handleLogout={handleLogout}
+            />
+          </>
+        )}
       </div>
     </div>
   );

@@ -20,7 +20,11 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <Navbar isAuthenticated={isAuthenticated} currentUser={currentUser} />
+        <Navbar
+          isAuthenticated={isAuthenticated}
+          setIsAuthenticated={setIsAuthenticated}
+          currentUser={currentUser}
+        />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/books' element={<BookList />} />
