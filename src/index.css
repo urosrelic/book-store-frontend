@@ -211,7 +211,6 @@ body {
 .book {
   width: 100%;
   height: 100%;
-  border: 1px solid 2b7a77;
   border-radius: 15px;
   color: #def2f1;
   display: flex;
@@ -301,19 +300,15 @@ body {
 
 /** REGISTER */
 .register-container {
+  margin: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.form-control {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
 
-.error-message {
-  color: red;
+#register-form {
+  width: 50%;
 }
 
 /** Media queries */
