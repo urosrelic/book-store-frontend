@@ -30,6 +30,7 @@ const ButtonDiv = styled.div`
   border: ${({ styles }) => styles?.border || defaultButtonStyles.border};
   border-radius: ${({ styles }) =>
     styles?.borderRadius || defaultButtonStyles.borderRadius};
+  cursor: pointer;
   transition: background 0.3s, color 0.3s; /* Add transition for a smooth hover effect */
 
   &:hover {
