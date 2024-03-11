@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField';
+import { Button } from '../components/Button/Button';
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -80,9 +81,7 @@ export const Login = () => {
           errorMessage={errors.password}
         />
 
-        <button className='submit-btn' type='submit'>
-          Login
-        </button>
+        <Button type='submit'>Submit</Button>
       </form>
     </div>
   );
