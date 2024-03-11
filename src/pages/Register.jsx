@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { InputField } from '../components/InputField/InputField';
+import { InputField } from '../components/InputField/InputField.styled';
 
 export const Register = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { InputField } from '../components/InputField/InputField';
-import { Button } from '../components/Button/Button';
+import { InputField } from '../components/InputField/InputField.styled';
+import { Button } from '../components/Button/Button.styled';
 import { useNavigate } from 'react-router-dom'; // Import the useHistory hook
 
 export const Login = ({
