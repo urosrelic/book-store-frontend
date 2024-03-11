@@ -2,7 +2,7 @@
 import { NavItem } from './NavItem';
 import { IoMdClose } from 'react-icons/io';
 
-export const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
+export const Sidebar = ({ isOpen, onClose, isAuthenticated, currentUser }) => {
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
@@ -12,6 +12,9 @@ export const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
           </h1>
           <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
+
+        {/* Conditionally render User Details */}
+        {isAuthenticated && <>{'Welcome back: ' + currentUser.username}</>}
 
         {/* Always show */}
         <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
