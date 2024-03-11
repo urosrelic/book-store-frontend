@@ -76,6 +76,7 @@ export const Register = () => {
 
   return (
     <div className='register-container'>
+      <h1>Register</h1>
       <form id='register-form' onSubmit={onSubmit}>
         <InputField
           id='username-input'
@@ -117,7 +118,9 @@ export const Register = () => {
           errorMessage={errors.confirmPassword}
         />
 
-        <button type='submit'>Register</button>
+        <button className='submit-btn' type='submit'>
+          Register
+        </button>
       </form>
     </div>
   );

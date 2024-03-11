@@ -311,6 +311,14 @@ body {
   width: 50%;
 }
 
+/** LOGIN */
+.login-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /** Media queries */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

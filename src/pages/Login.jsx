@@ -60,7 +60,7 @@ export const Login = () => {
   return (
     <div className='login-container'>
       <h1>Login</h1>
-      <form onSubmit={onSubmit}>
+      <form id='login-form' onSubmit={onSubmit}>
         <InputField
           id='username-input'
           labelName='Username'
@@ -80,7 +80,9 @@ export const Login = () => {
           errorMessage={errors.password}
         />
 
-        <button type='submit'>Login</button>
+        <button className='submit-btn' type='submit'>
+          Login
+        </button>
       </form>
     </div>
   );
