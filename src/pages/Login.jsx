@@ -18,7 +18,9 @@ export const Login = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const response = await axios.post('/api/users/login', data);
+      const response = await axios.get('/api/users/login', {
+        params: { username: data.username, password: data.password },
+      });
       if (response.status === 200) {
         console.log('User logged in successfully');
       } else {
