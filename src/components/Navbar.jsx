@@ -3,7 +3,7 @@ import { IoMdMenu } from 'react-icons/io';
 import { Sidebar } from './Sidebar';
 import { NavItem } from './NavItem';
 
-export const Navbar = () => {
+export const Navbar = ({ isAuthenticated }) => {
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
@@ -50,7 +50,11 @@ export const Navbar = () => {
       </div>
 
       {!isWideScreen && (
-        <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+        <Sidebar
+          isOpen={isSidebarOpen}
+          onClose={toggleSidebar}
+          isAuthenticated={isAuthenticated}
+        />
       )}
     </div>
   );

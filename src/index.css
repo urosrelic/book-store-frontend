@@ -306,10 +306,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+/* 
 #register-form {
   width: 50%;
-}
+} */
 
 /** LOGIN */
 .login-container {
