@@ -12,6 +12,11 @@ const defaultButtonStyles = {
   borderRadius: '5px',
 };
 
+const defaultHoverEffects = {
+  hoverBackground: '#101a1f',
+  hoverTextColor: '#3aafa9',
+};
+
 const ButtonDiv = styled.div`
   width: ${({ styles }) => styles?.width || defaultButtonStyles.width};
   height: ${({ styles }) => styles?.height || defaultButtonStyles.height};
@@ -25,6 +30,14 @@ const ButtonDiv = styled.div`
   border: ${({ styles }) => styles?.border || defaultButtonStyles.border};
   border-radius: ${({ styles }) =>
     styles?.borderRadius || defaultButtonStyles.borderRadius};
+  transition: background 0.3s, color 0.3s; /* Add transition for a smooth hover effect */
+
+  &:hover {
+    background: ${({ styles }) =>
+      styles?.hoverBackground || defaultHoverEffects.hoverBackground};
+    color: ${({ styles }) =>
+      styles?.hoverTextColor || defaultHoverEffects.hoverTextColor};
+  }
 `;
 
 export const Button = ({ type, styles, children, onClick }) => {
