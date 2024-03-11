@@ -6,8 +6,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    console.log('User authenticated: ', isAuthenticated);
+    console.log(currentUser);
+  }, [isAuthenticated, currentUser]);
+
   return (
     <div className='App'>
       <Router>
@@ -16,7 +25,16 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/books' element={<BookList />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
+          <Route
+            path='/login'
+            element={
+              <Login
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </Router>

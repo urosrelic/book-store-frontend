@@ -1,14 +1,20 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField';
 import { Button } from '../components/Button/Button';
 
-export const Login = () => {
+export const Login = ({
+  isAuthenticated,
+  setIsAuthenticated,
+  setCurrentUser,
+}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
@@ -45,10 +51,13 @@ export const Login = () => {
             password: formData.password,
           },
         });
+        console.log(response.data);
 
         if (response.status === 200) {
           console.log('User logged in successfully');
           // Optionally, you can redirect the user to another page or perform other actions
+          setIsAuthenticated(true);
+          setCurrentUser(response.data);
         } else {
           console.error('Incorrect username or password');
         }
