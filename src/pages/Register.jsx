@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
+import { Button } from '../components/Button/Button.styled';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -118,9 +119,7 @@ export const Register = () => {
           errorMessage={errors.confirmPassword}
         />
 
-        <button className='submit-btn' type='submit'>
-          Register
-        </button>
+        <Button type='submit'>Register</Button>
       </form>
     </div>
   );
