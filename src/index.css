@@ -319,6 +319,17 @@ body {
   align-items: center;
 }
 
+.login-to-register-text {
+  text-align: center;
+}
+
+.login-to-register-text span {
+  color: #101a1f;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
 /** Media queries */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
-import { useNavigate } from 'react-router-dom'; // Import the useHistory hook
+import { Link, useNavigate } from 'react-router-dom'; // Import the useHistory hook
+import { NavItem } from '../components/NavItem';
 
 export const Login = ({
   isAuthenticated,
@@ -91,6 +92,14 @@ export const Login = ({
         />
 
         <Button type='submit'>Submit</Button>
+        <p className='login-to-register-text'>
+          Don't have an account? <br />
+          Click{' '}
+          <Link to='/register'>
+            <span>here</span>
+          </Link>{' '}
+          to register
+        </p>
       </form>
     </div>
   );
