@@ -7,15 +7,16 @@ import { Home } from './pages/Home';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
 import { useEffect, useState } from 'react';
+import { PrivateRoutes } from './components/utils/PrivateRoutes';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
-    console.log('User authenticated: ', isAuthenticated);
-    console.log(currentUser);
-  }, [isAuthenticated, currentUser]);
+  // useEffect(() => {
+  //   console.log('User authenticated: ', isAuthenticated);
+  //   console.log(currentUser);
+  // }, [isAuthenticated, currentUser]);
 
   return (
     <div className='App'>
@@ -27,6 +28,10 @@ function App() {
         />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route element={<PrivateRoutes isAuthenticated={isAuthenticated} />}>
+            {/* // TODO ADD PRIVATE ROUTES */}
+            {/* example: Dashboard component */}
+          </Route>
           <Route path='/books' element={<BookList />} />
           <Route path='/register' element={<Register />} />
           <Route
