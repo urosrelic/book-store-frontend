@@ -24,34 +24,29 @@ export const Sidebar = ({
           </h1>
           <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
+        <div className='sidebar-links'>
+          {isAuthenticated && (
+            <div className='sidebar-authenticated'>
+              <div className='authenticated-user'>
+                Welcome back: {currentUser.username}
+              </div>
+              <NavItem
+                name={'Logout'}
+                closeSidebar={onClose}
+                handleLogout={handleLogout}
+              />
+            </div>
+          )}
 
-        {/* Conditionally render User Details */}
-        {isAuthenticated && (
-          <>
-            {/* // TODO instead of a welcome text render dashboard */}
-            {'Welcome back: ' + currentUser.username}
-          </>
-        )}
-        {/* Conditionally render "Register" and "Login" only if the user is not authenticated */}
-        {!isAuthenticated && (
-          <>
-            <NavItem name={'Login'} url={'/login'} closeSidebar={onClose} />
-          </>
-        )}
-        {isAuthenticated && (
-          <>
-            {' '}
-            <NavItem
-              name={'Logout'}
-              closeSidebar={onClose}
-              handleLogout={handleLogout}
-            />
-          </>
-        )}
-
-        {/* Always show */}
-        <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
-        <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
+          {!isAuthenticated && (
+            <div className='sidebar-not-authenticated'>
+              <NavItem name={'Login'} url={'/login'} closeSidebar={onClose} />
+            </div>
+          )}
+          {/* Always show */}
+          <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
+          <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
+        </div>
       </div>
     </div>
   );

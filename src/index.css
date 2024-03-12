@@ -116,6 +116,38 @@ body {
   color: #3aafa9;
 }
 
+.sidebar-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-authenticated,
+.sidebar-not-authenticated {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-authenticated::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #def2f1;
+  margin: 1rem 0;
+}
+
+.sidebar-authenticated::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #def2f1;
+  margin: 1rem 0;
+}
+
 /** NAV ITEM */
 .nav-item {
   margin: 1rem 0;
