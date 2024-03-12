@@ -32,19 +32,9 @@ export const Sidebar = ({
             {'Welcome back: ' + currentUser.username}
           </>
         )}
-
-        {/* Always show */}
-        <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
-        <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
-
         {/* Conditionally render "Register" and "Login" only if the user is not authenticated */}
         {!isAuthenticated && (
           <>
-            <NavItem
-              name={'Register'}
-              url={'/register'}
-              closeSidebar={onClose}
-            />
             <NavItem name={'Login'} url={'/login'} closeSidebar={onClose} />
           </>
         )}
@@ -58,6 +48,10 @@ export const Sidebar = ({
             />
           </>
         )}
+
+        {/* Always show */}
+        <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
+        <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
       </div>
     </div>
   );
