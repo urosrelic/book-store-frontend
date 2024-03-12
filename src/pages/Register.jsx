@@ -58,7 +58,7 @@ export const Register = () => {
 
     if (validateForm()) {
       try {
-        const response = await axios.post('/api/users', formData);
+        const response = await axios.post('/api/auth/register', formData);
         if (response.status === 201) {
           console.log('User registered successfully');
           // Optionally, you can redirect the user to another page or perform other actions

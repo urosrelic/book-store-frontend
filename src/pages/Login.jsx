@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
@@ -46,7 +47,7 @@ export const Login = ({
 
     if (validateForm()) {
       try {
-        const response = await axios.get('/api/users/login', {
+        const response = await axios.get('/api/auth/login', {
           params: {
             username: formData.username,
             password: formData.password,
@@ -93,7 +94,7 @@ export const Login = ({
 
         <Button type='submit'>Submit</Button>
         <p className='login-to-register-text'>
-          Don't have an account? <br />
+          Don&apos;t have an account? <br />
           Click{' '}
           <Link to='/register'>
             <span>here</span>
