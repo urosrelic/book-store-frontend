@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -120,6 +121,14 @@ export const Register = () => {
         />
 
         <Button type='submit'>Register</Button>
+        <p className='register-to-login-text'>
+          Already have an account? <br />
+          Click{' '}
+          <Link to='/login'>
+            <span>here</span>
+          </Link>{' '}
+          to login
+        </p>
       </form>
     </div>
   );
