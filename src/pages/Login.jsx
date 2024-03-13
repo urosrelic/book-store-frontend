@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
@@ -11,6 +10,7 @@ export const Login = ({ handleLogin }) => {
     password: '',
   });
   const [errors, setErrors] = useState({});
+  const [responseError, setResponseError] = useState(''); // State to hold error message
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -59,6 +59,7 @@ export const Login = ({ handleLogin }) => {
         }
       } catch (error) {
         console.error('Error: ', error);
+        setResponseError('Error: ' + error.response.status);
       }
     }
   };
@@ -74,7 +75,7 @@ export const Login = ({ handleLogin }) => {
           type='text'
           value={formData.username}
           onChange={handleInputChange}
-          errorMessage={errors.username}
+          responseError={errors.username}
         />
         <InputField
           id='password-input'
@@ -83,10 +84,11 @@ export const Login = ({ handleLogin }) => {
           type='password'
           value={formData.password}
           onChange={handleInputChange}
-          errorMessage={errors.password}
+          responseError={errors.password}
         />
-
         <Button type='submit'>Submit</Button>
+        {responseError && <p className='error-message'>{responseError}</p>}{' '}
+        {/* Display error message */}
         <p className='login-to-register-text'>
           Don&apos;t have an account? <br />
           Click{' '}
