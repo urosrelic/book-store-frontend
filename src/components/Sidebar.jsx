@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { NavItem } from './NavItem';
 import { IoMdClose } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
 
 export const Sidebar = ({
   isOpen,
@@ -9,12 +8,8 @@ export const Sidebar = ({
   isAuthenticated,
   setIsAuthenticated,
   currentUser,
+  handleLogout,
 }) => {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    navigate('/');
-  };
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>

@@ -56,6 +56,7 @@ function App() {
         <Navbar
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
+          handleLogout={handleLogout}
           currentUser={currentUser}
         />
         <Routes>

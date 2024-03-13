@@ -7,6 +7,7 @@ export const Navbar = ({
   isAuthenticated,
   setIsAuthenticated,
   currentUser,
+  handleLogout,
 }) => {
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -60,6 +61,7 @@ export const Navbar = ({
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
           currentUser={currentUser}
+          handleLogout={handleLogout}
         />
       )}
     </div>
