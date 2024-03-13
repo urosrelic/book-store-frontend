@@ -4,19 +4,14 @@ import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
 import { Link, useNavigate } from 'react-router-dom'; // Import the useHistory hook
-import { NavItem } from '../components/NavItem';
 
-export const Login = ({
-  isAuthenticated,
-  setIsAuthenticated,
-  setCurrentUser,
-}) => {
+export const Login = ({ handleLogin }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // Initialize useHistory hook
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
@@ -57,8 +52,7 @@ export const Login = ({
 
         if (response.status === 200) {
           console.log('User logged in successfully');
-          setIsAuthenticated(true);
-          setCurrentUser(response.data);
+          handleLogin(response.data);
           navigate('/'); // Redirect to '/' after successful login
         } else {
           console.error('Incorrect username or password');
