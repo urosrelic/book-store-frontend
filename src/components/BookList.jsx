@@ -11,9 +11,7 @@ export const BookList = () => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          'https://example-data.draftbit.com/books?_limit=50'
-        );
+        const res = await axios.get('/api/books');
         setLoading(false);
         console.log(res.data);
         setBooks(res.data);
