@@ -13,6 +13,7 @@ export const Register = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [responseError, setResponseError] = useState('');
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
@@ -68,6 +69,7 @@ export const Register = () => {
         }
       } catch (error) {
         console.error('Error:', error);
+        setResponseError('Error: ' + error.response.status);
       }
     }
   };
@@ -89,7 +91,6 @@ export const Register = () => {
           onChange={handleInputChange}
           errorMessage={errors.username}
         />
-
         <InputField
           id='email-input'
           labelName='Email'
@@ -99,7 +100,6 @@ export const Register = () => {
           onChange={handleInputChange}
           errorMessage={errors.email}
         />
-
         <InputField
           id='password-input'
           labelName='Password'
@@ -109,7 +109,6 @@ export const Register = () => {
           onChange={handleInputChange}
           errorMessage={errors.password}
         />
-
         <InputField
           id='confirm-password-input'
           labelName='Confirm Password'
@@ -119,7 +118,7 @@ export const Register = () => {
           onChange={handleInputChange}
           errorMessage={errors.confirmPassword}
         />
-
+        {responseError && <p className='error-message'>{responseError}</p>}{' '}
         <Button type='submit'>Register</Button>
         <p className='register-to-login-text'>
           Already have an account? <br />
