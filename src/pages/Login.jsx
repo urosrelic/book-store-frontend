@@ -52,6 +52,7 @@ export const Login = ({ handleLogin }) => {
 
         if (response.status === 200) {
           console.log('User logged in successfully');
+          alert('User logged in successfully');
           handleLogin(response.data);
           navigate('/'); // Redirect to '/' after successful login
         } else {
