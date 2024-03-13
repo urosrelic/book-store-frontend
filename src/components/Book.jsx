@@ -5,16 +5,18 @@ export const Book = ({
   description,
   edition,
   format,
-  um_pages,
+  numPages,
   rating,
   genres,
-  image_url,
-  quote,
+  imageUrl,
+  quote1,
+  quote2,
+  quote3,
 }) => {
   return (
     <div className='book'>
       <div className='book-image'>
-        <img src={image_url} />
+        <img src={imageUrl} />
       </div>
       <span className='book-title'>{title}</span>
       <span className='book-author'>{authors}</span>
