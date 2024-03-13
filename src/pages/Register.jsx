@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,8 @@ export const Register = () => {
 
   const [errors, setErrors] = useState({});
   const [responseError, setResponseError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
@@ -62,10 +64,10 @@ export const Register = () => {
         const response = await axios.post('/api/auth/register', formData);
         if (response.status === 201) {
           console.log('User registered successfully');
-          // Optionally, you can redirect the user to another page or perform other actions
+          alert('User registered successfully');
+          navigate('/login');
         } else {
           console.error('Failed to register user');
-          // Handle the error, show a message to the user, etc.
         }
       } catch (error) {
         console.error('Error:', error);
