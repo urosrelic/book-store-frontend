@@ -9,6 +9,7 @@ export const BookList = () => {
 
   const [page, setPage] = useState(0); // Current page number
   const [pageSize, setPageSize] = useState(10); // Number of items per page
+  const [totalPages, setTotalPages] = useState(0); // Total number of pages
 
   useEffect(() => {
     setLoading(true);
@@ -18,6 +19,7 @@ export const BookList = () => {
         setLoading(false);
         console.log(res.data);
         setBooks(res.data.content); // Assuming the response contains 'content' field with the actual data
+        setTotalPages(Math.ceil(res.data.totalElements / pageSize)); // Calculate total pages
       } catch (error) {
         const { status, data } = error.response;
         setError(`Error (${status}): ${data.message}`);
@@ -36,15 +38,20 @@ export const BookList = () => {
       ) : (
         books && books.map((book) => <Book key={book.id} {...book} />)
       )}
-      <button
-        onClick={() => setPage((prevPage) => prevPage - 1)}
-        disabled={page === 0}
-      >
-        Previous Page
-      </button>
-      <button onClick={() => setPage((prevPage) => prevPage + 1)}>
-        Next Page
-      </button>
+      <div className='book-pagination'>
+        <div>
+          Page {page + 1} of {totalPages}
+        </div>
+        <button
+          onClick={() => setPage((prevPage) => prevPage - 1)}
+          disabled={page === 0}
+        >
+          Previous Page
+        </button>
+        <button onClick={() => setPage((prevPage) => prevPage + 1)}>
+          Next Page
+        </button>
+      </div>
     </div>
   );
 };
