@@ -180,10 +180,10 @@ body {
   background-color: #37a495;
   border-radius: 5px;
   align-items: center;
-  justify-content: center;
 }
 
 .search-box input {
+  width: 90%;
   font-size: 1rem;
   margin-left: 5px;
   background-color: #37a495;
@@ -192,6 +192,7 @@ body {
 }
 
 .clear-text-btn {
+  width: 10%;
   opacity: 0;
 }
 
