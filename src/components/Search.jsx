@@ -15,7 +15,7 @@ export const Search = () => {
   };
 
   const buttonStyles = {
-    width: '5rem',
+    width: '3rem',
     height: '3rem',
     background: '#37a495',
     textColor: '#17242a;',
@@ -30,12 +30,11 @@ export const Search = () => {
     <div className='search-container'>
       <div className='search-container-items'>
         <div className='search-box'>
-          <FaSearch className='search-icon' />
           <input type='text' value={query} onChange={handleInputChange} />
           <MdCancel className={cancelButtonClass} onClick={clearText} />
         </div>
         <Button className='search-button' styles={buttonStyles}>
-          Search
+          <FaSearch className='search-icon' />
         </Button>
       </div>
     </div>
