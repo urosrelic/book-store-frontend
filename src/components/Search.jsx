@@ -13,13 +13,15 @@ export const Search = () => {
 
   return (
     <div className='search-container'>
-      <div className='search-box'>
-        <FaSearch className='search-icon' />
-        <input type='text' />
+      <div className='search-container-items'>
+        <div className='search-box'>
+          <FaSearch className='search-icon' />
+          <input type='text' />
+        </div>
+        <Button className='search-button' styles={buttonStyles}>
+          Search
+        </Button>
       </div>
-      <Button className='search-button' styles={buttonStyles}>
-        Search
-      </Button>
     </div>
   );
 };
