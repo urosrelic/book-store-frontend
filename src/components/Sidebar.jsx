@@ -15,9 +15,13 @@ export const Sidebar = ({
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
-          <Search />
+          <h1 className='sidebar-title'>
+            Book<span>store</span>
+          </h1>
           <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
+        <Search />
+
         <div className='sidebar-links'>
           {isAuthenticated && (
             <div className='sidebar-authenticated'>

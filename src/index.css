@@ -100,6 +100,10 @@ body {
   cursor: pointer;
 }
 
+.sidebar-title span {
+  color: #3aafa9;
+}
+
 .sidebar-close-btn-icon {
   font-size: 2rem;
 }
@@ -155,13 +159,13 @@ body {
 }
 
 .search-button {
-  width: 30%;
+  width: 20%;
 }
 
 .search-box {
   color: #17242a;
   margin-right: 0.5rem;
-  width: 70%;
+  width: 80%;
   padding: 0.5rem;
   height: 3rem;
   display: flex;
