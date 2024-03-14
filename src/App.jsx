@@ -66,7 +66,10 @@ function App() {
             {/* example: Dashboard component */}
           </Route>
           <Route path='/books' element={<BookList />} />
-          <Route path='/register' element={<Register />} />
+          <Route
+            path='/register'
+            element={<Register isAuthenticated={isAuthenticated} />}
+          />
           <Route
             path='/login'
             element={

@@ -4,7 +4,7 @@ import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-export const Register = () => {
+export const Register = ({ isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -16,6 +16,12 @@ export const Register = () => {
   const [responseError, setResponseError] = useState('');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
