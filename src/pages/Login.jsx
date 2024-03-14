@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
-import { Link, useNavigate } from 'react-router-dom'; // Import the useHistory hook
+import { Link, useNavigate, redirect } from 'react-router-dom'; // Import the useHistory hook
 
-export const Login = ({ handleLogin }) => {
+export const Login = ({ handleLogin, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -12,6 +12,12 @@ export const Login = ({ handleLogin }) => {
   const [errors, setErrors] = useState({});
   const [responseError, setResponseError] = useState(''); // State to hold error message
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleInputChange = (e) => {
     setFormData((prevData) => ({

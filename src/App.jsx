@@ -67,7 +67,15 @@ function App() {
           </Route>
           <Route path='/books' element={<BookList />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login handleLogin={handleLogin} />} />
+          <Route
+            path='/login'
+            element={
+              <Login
+                handleLogin={handleLogin}
+                isAuthenticated={isAuthenticated}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </Router>
