@@ -17,9 +17,7 @@ export const Book = ({
   quote3,
 }) => {
   const buttonStyles = {
-    width: '50%',
-    display: 'flex',
-    alignItems: 'center',
+    width: '30%',
   };
   return (
     <div className='book'>
