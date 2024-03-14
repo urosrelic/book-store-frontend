@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Register = ({ isAuthenticated }) => {
   const [formData, setFormData] = useState({
