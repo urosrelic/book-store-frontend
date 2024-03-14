@@ -33,8 +33,9 @@ export const BookList = () => {
     fetchData();
   }, [page, pageSize]); // Execute effect when page or pageSize changes
 
-  const buttonStyles = {
-    width: '3rem',
+  const sxProp = {
+    cursor: 'pointer',
+    color: 'white',
   };
 
   return (
@@ -49,23 +50,21 @@ export const BookList = () => {
         )}
       </div>
       <div className='book-pagination'>
-        <Button
+        <ArrowCircleLeftIcon
           onClick={() => setPage((prevPage) => prevPage - 1)}
           disabled={page === 0}
-          styles={buttonStyles}
-        >
-          <ArrowCircleLeftIcon />
-        </Button>
+          fontSize={'large'}
+          sx={sxProp}
+        />
         <div className='pages'>
           Page <span>{page + 1}</span> of {totalPages}
         </div>
 
-        <Button
+        <ArrowCircleRightIcon
           onClick={() => setPage((prevPage) => prevPage + 1)}
-          styles={buttonStyles}
-        >
-          <ArrowCircleRightIcon />
-        </Button>
+          fontSize={'large'}
+          sx={sxProp}
+        />
       </div>
     </div>
   );
