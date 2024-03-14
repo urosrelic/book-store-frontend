@@ -30,7 +30,12 @@ export const Search = () => {
     <div className='search-container'>
       <div className='search-container-items'>
         <div className='search-box'>
-          <input type='text' value={query} onChange={handleInputChange} />
+          <input
+            type='text'
+            value={query}
+            onChange={handleInputChange}
+            placeholder='Enter search criteria...'
+          />
           <MdCancel className={cancelButtonClass} onClick={clearText} />
         </div>
         <Button className='search-button' styles={buttonStyles}>

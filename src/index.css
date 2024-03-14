@@ -191,6 +191,10 @@ body {
   border: none;
 }
 
+.search-box input::placeholder {
+  color: rgb(65, 62, 62);
+}
+
 .clear-text-btn {
   width: 10%;
   opacity: 0;
