@@ -56,7 +56,7 @@ body {
 }
 
 .navbar-links {
-  width: 20%;
+  /* width: 20%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -281,6 +281,13 @@ body {
   border-radius: 5px;
   border: none;
   outline: none;
+}
+
+/** BOOKS */
+.books-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /** BOOK LIST */

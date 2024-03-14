@@ -1,4 +1,3 @@
-import { BookList } from './components/BookList';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -11,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Cookies from 'js-cookie';
+import { Books } from './pages/Books';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -65,7 +65,7 @@ function App() {
             {/* // TODO ADD PRIVATE ROUTES */}
             {/* example: Dashboard component */}
           </Route>
-          <Route path='/books' element={<BookList />} />
+          <Route path='/books' element={<Books />} />
           <Route
             path='/register'
             element={<Register isAuthenticated={isAuthenticated} />}
