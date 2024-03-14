@@ -1,7 +1,9 @@
-import { FaSearch } from 'react-icons/fa';
-import { Button } from './Button/Button.styled';
-import { MdCancel } from 'react-icons/md';
 import { useState } from 'react';
+
+import SearchIcon from '@mui/icons-material/Search';
+import CancelIcon from '@mui/icons-material/Cancel';
+
+import { Button } from './Button/Button.styled';
 
 export const Search = () => {
   const [query, setQuery] = useState('');
@@ -36,10 +38,10 @@ export const Search = () => {
             onChange={handleInputChange}
             placeholder='Enter search criteria...'
           />
-          <MdCancel className={cancelButtonClass} onClick={clearText} />
+          <CancelIcon className={cancelButtonClass} onClick={clearText} />
         </div>
         <Button className='search-button' styles={buttonStyles}>
-          <FaSearch className='search-icon' />
+          <SearchIcon className='search-icon' />
         </Button>
       </div>
     </div>

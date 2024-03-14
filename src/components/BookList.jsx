@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Book } from './Book';
 import { Button } from './Button/Button.styled';
 
-import { FaLessThan } from 'react-icons/fa';
-import { FaGreaterThan } from 'react-icons/fa';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 export const BookList = () => {
   const [books, setBooks] = useState(null);
@@ -54,7 +54,7 @@ export const BookList = () => {
           disabled={page === 0}
           styles={buttonStyles}
         >
-          <FaLessThan />
+          <ArrowCircleLeftIcon />
         </Button>
         <div className='pages'>
           Page <span>{page + 1}</span> of {totalPages}
@@ -64,7 +64,7 @@ export const BookList = () => {
           onClick={() => setPage((prevPage) => prevPage + 1)}
           styles={buttonStyles}
         >
-          <FaGreaterThan />
+          <ArrowCircleRightIcon />
         </Button>
       </div>
     </div>

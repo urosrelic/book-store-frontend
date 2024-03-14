@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { IoMdMenu } from 'react-icons/io';
 import { Sidebar } from './Sidebar';
 import { NavItem } from './NavItem';
 
+import MenuIcon from '@mui/icons-material/Menu';
 export const Navbar = ({
   isAuthenticated,
   setIsAuthenticated,
@@ -51,7 +51,7 @@ export const Navbar = ({
       )}
 
       <div className='hamburger-menu' onClick={toggleSidebar}>
-        <IoMdMenu />
+        <MenuIcon fontSize={'large'} />
       </div>
 
       {!isWideScreen && (

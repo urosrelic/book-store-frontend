@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import { NavItem } from './NavItem';
-import { IoMdClose } from 'react-icons/io';
-import { Search } from './Search';
+import CancelIcon from '@mui/icons-material/Cancel';
 
+import { Search } from './Search';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
+import HomeIcon from '@mui/icons-material/Home';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 export const Sidebar = ({
   isOpen,
   onClose,
@@ -18,7 +22,7 @@ export const Sidebar = ({
           <h1 className='sidebar-title'>
             Book<span>store</span>
           </h1>
-          <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
+          <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
         <Search />
 
@@ -32,18 +36,34 @@ export const Sidebar = ({
                 name={'Logout'}
                 closeSidebar={onClose}
                 handleLogout={handleLogout}
+                icon={<LogoutIcon />}
               />
             </div>
           )}
 
           {!isAuthenticated && (
             <div className='sidebar-not-authenticated'>
-              <NavItem name={'Login'} url={'/login'} closeSidebar={onClose} />
+              <NavItem
+                name={'Login'}
+                url={'/login'}
+                closeSidebar={onClose}
+                icon={<LoginIcon />}
+              />
             </div>
           )}
           {/* Always show */}
-          <NavItem name={'Home'} url={'/'} closeSidebar={onClose} />
-          <NavItem name={'Books'} url={'/books'} closeSidebar={onClose} />
+          <NavItem
+            name={'Home'}
+            url={'/'}
+            closeSidebar={onClose}
+            icon={<HomeIcon />}
+          />
+          <NavItem
+            name={'Books'}
+            url={'/books'}
+            closeSidebar={onClose}
+            icon={<LibraryBooksIcon />}
+          />
         </div>
       </div>
     </div>

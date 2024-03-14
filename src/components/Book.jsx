@@ -1,4 +1,6 @@
 import { Button } from '../components/Button/Button.styled';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 export const Book = ({
   id,
   title,
@@ -16,6 +18,8 @@ export const Book = ({
 }) => {
   const buttonStyles = {
     width: '50%',
+    display: 'flex',
+    alignItems: 'center',
   };
   return (
     <div className='book'>
@@ -25,7 +29,9 @@ export const Book = ({
       <span className='book-title'>{title}</span>
       <span className='book-author'>{authors}</span>
       <span className='book-categories'>Genres: {genres}</span>
-      <Button styles={buttonStyles}>Rent</Button>
+      <Button styles={buttonStyles}>
+        <AddCircleIcon /> Buy
+      </Button>
     </div>
   );
 };

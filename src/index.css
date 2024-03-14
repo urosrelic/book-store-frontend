@@ -210,6 +210,10 @@ body {
   margin: 1rem 0;
   padding: 0.5rem;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   background-color: #37a495;
   text-decoration: none;
   color: #17242a;
@@ -217,6 +221,15 @@ body {
   font-weight: 900;
   text-align: center;
   cursor: pointer;
+}
+
+.nav-item-icon,
+.nav-item-name {
+  width: 2rem;
+  margin: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /** HOME */
