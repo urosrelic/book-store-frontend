@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { NavItem } from './NavItem';
 import { IoMdClose } from 'react-icons/io';
+import { Search } from './Search';
 
 export const Sidebar = ({
   isOpen,
@@ -14,9 +15,7 @@ export const Sidebar = ({
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
-          <h1 className='sidebar-title'>
-            Book<span>store</span>
-          </h1>
+          <Search />
           <IoMdClose className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
         <div className='sidebar-links'>
