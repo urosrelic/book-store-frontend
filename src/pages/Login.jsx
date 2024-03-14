@@ -82,7 +82,7 @@ export const Login = ({ handleLogin, isAuthenticated }) => {
           type='text'
           value={formData.username}
           onChange={handleInputChange}
-          responseError={errors.username}
+          errorMessage={errors.username}
         />
         <InputField
           id='password-input'
@@ -91,7 +91,7 @@ export const Login = ({ handleLogin, isAuthenticated }) => {
           type='password'
           value={formData.password}
           onChange={handleInputChange}
-          responseError={errors.password}
+          errorMessage={errors.password}
         />
         <Button type='submit'>Submit</Button>
         {responseError && <p className='error-message'>{responseError}</p>}{' '}
