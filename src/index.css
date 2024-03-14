@@ -229,6 +229,13 @@ body {
 }
 
 /** BOOK LIST */
+.book-list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .book-list {
   width: 100%;
   display: grid;
@@ -237,6 +244,24 @@ body {
   justify-content: center;
   padding: 1rem;
   gap: 1.5rem;
+}
+
+.book-pagination {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages {
+  margin: 0 0.5rem;
+  color: #def2f1;
+  font-weight: 600;
+}
+
+.pages span {
+  color: #17242a;
 }
 
 /** BOOK */

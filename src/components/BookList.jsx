@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Book } from './Book';
+import { Button } from './Button/Button.styled';
+
+import { FaLessThan } from 'react-icons/fa';
+import { FaGreaterThan } from 'react-icons/fa';
 
 export const BookList = () => {
   const [books, setBooks] = useState(null);
@@ -17,7 +21,7 @@ export const BookList = () => {
       try {
         const res = await axios.get(`/api/books?page=${page}&size=${pageSize}`);
         setLoading(false);
-        console.log(res.data);
+        // console.log(res.data);
         setBooks(res.data.content); // Assuming the response contains 'content' field with the actual data
         setTotalPages(Math.ceil(res.data.totalElements / pageSize)); // Calculate total pages
       } catch (error) {
@@ -29,28 +33,39 @@ export const BookList = () => {
     fetchData();
   }, [page, pageSize]); // Execute effect when page or pageSize changes
 
+  const buttonStyles = {
+    width: '3rem',
+  };
+
   return (
-    <div className='book-list'>
-      {error ? (
-        <h1>{error}</h1>
-      ) : loading ? (
-        <h1>Loading data</h1>
-      ) : (
-        books && books.map((book) => <Book key={book.id} {...book} />)
-      )}
+    <div className='book-list-container'>
+      <div className='book-list'>
+        {error ? (
+          <h1>{error}</h1>
+        ) : loading ? (
+          <h1>Loading data</h1>
+        ) : (
+          books && books.map((book) => <Book key={book.id} {...book} />)
+        )}
+      </div>
       <div className='book-pagination'>
-        <div>
-          Page {page + 1} of {totalPages}
-        </div>
-        <button
+        <Button
           onClick={() => setPage((prevPage) => prevPage - 1)}
           disabled={page === 0}
+          styles={buttonStyles}
         >
-          Previous Page
-        </button>
-        <button onClick={() => setPage((prevPage) => prevPage + 1)}>
-          Next Page
-        </button>
+          <FaLessThan />
+        </Button>
+        <div className='pages'>
+          Page <span>{page + 1}</span> of {totalPages}
+        </div>
+
+        <Button
+          onClick={() => setPage((prevPage) => prevPage + 1)}
+          styles={buttonStyles}
+        >
+          <FaGreaterThan />
+        </Button>
       </div>
     </div>
   );
