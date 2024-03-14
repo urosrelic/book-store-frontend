@@ -81,7 +81,7 @@ export const InputField = ({
   value,
   required,
   onChange,
-  // styles // TODO ADD STYLES PROP
+  styles,
   errorMessage,
 }) => {
   const handleInputChange = (e) => {
@@ -97,11 +97,14 @@ export const InputField = ({
           type={type}
           value={value}
           data-1p-ignore
+          style={styles}
           onChange={handleInputChange}
           required={required}
           className={value ? 'has-value' : ''}
         />
-        <StyledLabel htmlFor={id}>{labelName}</StyledLabel>
+        <StyledLabel htmlFor={id} style={styles}>
+          {labelName}
+        </StyledLabel>
       </InputGroup>
       {errorMessage && <ErrorDiv> {errorMessage}</ErrorDiv>}
     </div>
