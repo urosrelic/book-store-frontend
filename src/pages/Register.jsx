@@ -3,6 +3,7 @@ import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
 import { Link, useNavigate } from 'react-router-dom';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export const Register = ({ isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -121,8 +122,7 @@ export const Register = ({ isAuthenticated }) => {
           onChange={handleInputChange}
           errorMessage={errors.confirmPassword}
         />
-        {/* // TODO move error message as a component */}
-        {responseError && <p className='error-message'>{responseError}</p>}{' '}
+        <ErrorMessage message={responseError} />
         <Button type='submit'>Register</Button>
         <p className='register-to-login-text'>
           Already have an account? <br />
