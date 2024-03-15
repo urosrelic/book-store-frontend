@@ -3,6 +3,7 @@ import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
 import { Link, useNavigate, redirect } from 'react-router-dom'; // Import the useHistory hook
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export const Login = ({ handleLogin, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -94,7 +95,7 @@ export const Login = ({ handleLogin, isAuthenticated }) => {
           errorMessage={errors.password}
         />
         <Button type='submit'>Submit</Button>
-        {responseError && <p className='error-message'>{responseError}</p>}{' '}
+        <ErrorMessage message={responseError} />
         {/* Display error message */}
         <p className='login-to-register-text'>
           Don&apos;t have an account? <br />
