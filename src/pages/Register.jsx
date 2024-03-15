@@ -77,7 +77,7 @@ export const Register = ({ isAuthenticated }) => {
         }
       } catch (error) {
         console.error('Error:', error);
-        setResponseError('Error: ' + error.response.status);
+        setResponseError('Error: ' + error.response.data);
       }
     }
   };
