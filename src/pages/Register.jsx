@@ -63,7 +63,6 @@ export const Register = ({ isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     if (validateForm()) {
       try {
@@ -81,10 +80,6 @@ export const Register = ({ isAuthenticated }) => {
       }
     }
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <div className='register-container'>
@@ -126,6 +121,7 @@ export const Register = ({ isAuthenticated }) => {
           onChange={handleInputChange}
           errorMessage={errors.confirmPassword}
         />
+        {/* // TODO move error message as a component */}
         {responseError && <p className='error-message'>{responseError}</p>}{' '}
         <Button type='submit'>Register</Button>
         <p className='register-to-login-text'>
