@@ -86,7 +86,7 @@ body {
 }
 
 .sidebar.open {
-  width: 100%;
+  width: 50%;
 }
 
 .sidebar-close-btn {
@@ -213,7 +213,6 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   background-color: #37a495;
   text-decoration: none;
   color: #17242a;
@@ -225,9 +224,16 @@ body {
 
 .nav-item-icon,
 .nav-item-name {
-  width: 10%;
   display: flex;
   flex-direction: row;
+}
+
+.nav-item-icon {
+  width: 20%;
+}
+
+.nav-item-name {
+  width: 80%;
 }
 
 /** HOME */

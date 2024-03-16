@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '../hooks/useAuth';
 import { NavItem } from './NavItem';
 import { Search } from './Search';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated, currentUser } = useAuth();
@@ -21,7 +22,6 @@ export const Sidebar = ({ isOpen, onClose }) => {
           </h1>
           <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
-        <Search />
 
         <div className='sidebar-links'>
           {isAuthenticated && (
@@ -58,11 +58,18 @@ export const Sidebar = ({ isOpen, onClose }) => {
             closeSidebar={onClose}
             icon={<HomeIcon />}
           />
+
           <NavItem
             name={'Books'}
             url={'/books'}
             closeSidebar={onClose}
             icon={<LibraryBooksIcon />}
+          />
+          <NavItem
+            name={'Search'}
+            url={'/search'}
+            closeSidebar={onClose}
+            icon={<SearchIcon />}
           />
         </div>
       </div>
