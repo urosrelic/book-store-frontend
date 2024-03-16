@@ -3,7 +3,7 @@ import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
-import { PrivateRoutes } from './components/utils/PrivateRoutes';
+import { PrivateRoutes } from './utils/PrivateRoutes';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
