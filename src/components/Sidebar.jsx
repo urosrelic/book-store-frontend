@@ -11,7 +11,7 @@ import { Search } from './Search';
 import SearchIcon from '@mui/icons-material/Search';
 
 export const Sidebar = ({ isOpen, onClose }) => {
-  const { isAuthenticated, currentUser } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
