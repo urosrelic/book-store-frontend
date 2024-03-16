@@ -1,37 +1,17 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 import { BookItem } from './BookItem';
 
-export const BookList = () => {
-  const [books, setBooks] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+import { useBooks } from '../hooks/useBooks';
 
+export const BookList = () => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  const [totalPages, setTotalPages] = useState(0);
 
-  useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/api/books?page=${page}&size=${pageSize}`);
-        setLoading(false);
-        console.log(res.data);
-        setBooks(res.data.content);
-        setTotalPages(Math.ceil(res.data.totalElements / pageSize));
-      } catch (error) {
-        const { status, data } = error.response;
-        setError(`Error (${status}): ${data.message}`);
-      }
-    };
-
-    fetchData();
-  }, [page, pageSize]); // Execute effect when page or pageSize changes
+  const { books, loading, error, totalPages } = useBooks(page, pageSize);
 
   const sxProp = {
     cursor: 'pointer',
