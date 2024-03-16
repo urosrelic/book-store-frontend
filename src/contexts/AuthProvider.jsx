@@ -1,35 +1,51 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { createContext } from 'react';
-
 import Cookies from 'js-cookie';
+import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  // TODO add loading to handle async nature of cookie reading
-  // TODO add error catching
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const token = Cookies.get('auth_token');
-    if (token) {
-      setIsAuthenticated(true);
-      setCurrentUser(JSON.parse(token));
-    }
+    const fetchAuthData = async () => {
+      try {
+        const token = Cookies.get('auth_token');
+        if (token) {
+          const parsedUser = JSON.parse(token);
+          setIsAuthenticated(true);
+          setCurrentUser(parsedUser);
+        }
+      } catch (error) {
+        console.error('Error fetching authentication data:', error);
+        setError('An error occurred while retrieving authentication data.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAuthData();
   }, []);
 
   const handleLogin = (user) => {
-    Cookies.set('auth_token', JSON.stringify(user), { expires: 30 }); // Cookie expires after 30 days
-    setIsAuthenticated(true);
-    setCurrentUser(user);
+    try {
+      Cookies.set('auth_token', JSON.stringify(user), { expires: 30 });
+      setIsAuthenticated(true);
+      setCurrentUser(user);
+      setError(''); // Clear any previous errors on successful login
+    } catch (error) {
+      console.error('Error during login:', error);
+      setError('An error occurred during login. Please try again.');
+    }
   };
 
   const handleLogout = () => {
     Cookies.remove('auth_token');
     setIsAuthenticated(false);
     setCurrentUser(null);
+    setError(''); // Clear any previous errors on logout
   };
 
   return (
@@ -41,6 +57,8 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser,
         handleLogin,
         handleLogout,
+        loading,
+        error,
       }}
     >
       {children}
