@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Book } from './Book';
-import { Button } from './Button/Button.styled';
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
@@ -21,7 +20,7 @@ export const BookList = () => {
       try {
         const res = await axios.get(`/api/books?page=${page}&size=${pageSize}`);
         setLoading(false);
-        // console.log(res.data);
+        console.log(res.data);
         setBooks(res.data.content); // Assuming the response contains 'content' field with the actual data
         setTotalPages(Math.ceil(res.data.totalElements / pageSize)); // Calculate total pages
       } catch (error) {
@@ -46,7 +45,7 @@ export const BookList = () => {
         ) : loading ? (
           <h1>Loading data</h1>
         ) : (
-          books && books.map((book) => <Book key={book.id} {...book} />)
+          books && books.map((book) => <Book key={book.bookId} {...book} />)
         )}
       </div>
       <div className='book-pagination'>
