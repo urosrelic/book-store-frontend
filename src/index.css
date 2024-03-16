@@ -86,7 +86,7 @@ body {
 }
 
 .sidebar.open {
-  width: 50%;
+  width: 80%;
 }
 
 .sidebar-close-btn {
@@ -487,16 +487,30 @@ body {
 }
 
 /** Media queries */
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 380px) {
+  .sidebar.open {
+    width: 60%;
+  }
+}
 @media only screen and (min-width: 600px) {
+  .sidebar.open {
+    width: 40%;
+  }
   .book-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  .sidebar.open {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .sidebar.open {
+    width: 25%;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
