@@ -5,10 +5,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SearchIcon from '@mui/icons-material/Search';
 import { useAuth } from '../hooks/useAuth';
 import { NavItem } from './NavItem';
-import { Search } from './Search';
-import SearchIcon from '@mui/icons-material/Search';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated } = useAuth();
