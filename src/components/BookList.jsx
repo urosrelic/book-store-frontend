@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Book } from './Book';
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+
+import { BookItem } from './BookItem';
 
 export const BookList = () => {
   const [books, setBooks] = useState(null);
@@ -45,7 +46,7 @@ export const BookList = () => {
         ) : loading ? (
           <h1>Loading data</h1>
         ) : (
-          books && books.map((book) => <Book key={book.bookId} {...book} />)
+          books && books.map((book) => <BookItem key={book.bookId} {...book} />)
         )}
       </div>
       <div className='book-pagination'>
