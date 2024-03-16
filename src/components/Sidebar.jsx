@@ -9,7 +9,7 @@ import { NavItem } from './NavItem';
 import { Search } from './Search';
 
 export const Sidebar = ({ isOpen, onClose }) => {
-  const { isAuthenticated, currentUser, handleLogout } = useAuth();
+  const { isAuthenticated, currentUser } = useAuth();
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
