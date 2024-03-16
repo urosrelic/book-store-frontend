@@ -10,9 +10,9 @@ export const BookList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const [page, setPage] = useState(0); // Current page number
-  const [pageSize, setPageSize] = useState(10); // Number of items per page
-  const [totalPages, setTotalPages] = useState(0); // Total number of pages
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -21,8 +21,8 @@ export const BookList = () => {
         const res = await axios.get(`/api/books?page=${page}&size=${pageSize}`);
         setLoading(false);
         console.log(res.data);
-        setBooks(res.data.content); // Assuming the response contains 'content' field with the actual data
-        setTotalPages(Math.ceil(res.data.totalElements / pageSize)); // Calculate total pages
+        setBooks(res.data.content);
+        setTotalPages(Math.ceil(res.data.totalElements / pageSize));
       } catch (error) {
         const { status, data } = error.response;
         setError(`Error (${status}): ${data.message}`);
