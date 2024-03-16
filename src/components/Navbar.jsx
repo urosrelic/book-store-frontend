@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Sidebar } from './Sidebar';
+import { useEffect, useState } from 'react';
 import { NavItem } from './NavItem';
+import { Sidebar } from './Sidebar';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAuth } from '../hooks/useAuth';
 export const Navbar = () => {
-  const { isAuthenticated, setIsAuthenticated, currentUser, handleLogout } =
-    useAuth();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
