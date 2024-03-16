@@ -1,20 +1,16 @@
 /* eslint-disable react/prop-types */
-import { NavItem } from './NavItem';
 import CancelIcon from '@mui/icons-material/Cancel';
-
-import { Search } from './Search';
-import LogoutIcon from '@mui/icons-material/Logout';
-import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-export const Sidebar = ({
-  isOpen,
-  onClose,
-  isAuthenticated,
-  setIsAuthenticated,
-  currentUser,
-  handleLogout,
-}) => {
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth } from '../hooks/useAuth';
+import { NavItem } from './NavItem';
+import { Search } from './Search';
+
+export const Sidebar = ({ isOpen, onClose }) => {
+  const { isAuthenticated, currentUser, handleLogout } = useAuth();
+
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
@@ -35,7 +31,6 @@ export const Sidebar = ({
               <NavItem
                 name={'Logout'}
                 closeSidebar={onClose}
-                handleLogout={handleLogout}
                 icon={<LogoutIcon />}
               />
             </div>

@@ -3,12 +3,10 @@ import { Sidebar } from './Sidebar';
 import { NavItem } from './NavItem';
 
 import MenuIcon from '@mui/icons-material/Menu';
-export const Navbar = ({
-  isAuthenticated,
-  setIsAuthenticated,
-  currentUser,
-  handleLogout,
-}) => {
+import { useAuth } from '../hooks/useAuth';
+export const Navbar = () => {
+  const { isAuthenticated, setIsAuthenticated, currentUser, handleLogout } =
+    useAuth();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
@@ -55,14 +53,7 @@ export const Navbar = ({
       </div>
 
       {!isWideScreen && (
-        <Sidebar
-          isOpen={isSidebarOpen}
-          onClose={toggleSidebar}
-          isAuthenticated={isAuthenticated}
-          setIsAuthenticated={setIsAuthenticated}
-          currentUser={currentUser}
-          handleLogout={handleLogout}
-        />
+        <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       )}
     </div>
   );

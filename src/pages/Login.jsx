@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
-import { Link, useNavigate, redirect } from 'react-router-dom'; // Import the useHistory hook
+import { Link, useNavigate } from 'react-router-dom';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { useAuth } from '../hooks/useAuth';
 
-export const Login = ({ handleLogin, isAuthenticated }) => {
+export const Login = () => {
+  const { handleLogin, isAuthenticated } = useAuth();
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
   const [errors, setErrors] = useState({});
-  const [responseError, setResponseError] = useState(''); // State to hold error message
+  const [responseError, setResponseError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,7 +64,7 @@ export const Login = ({ handleLogin, isAuthenticated }) => {
           console.log('User logged in successfully');
           alert('User logged in successfully');
           handleLogin(response.data);
-          navigate('/'); // Redirect to '/' after successful login
+          navigate('/');
         } else {
           console.error('Incorrect username or password');
         }
@@ -96,7 +99,6 @@ export const Login = ({ handleLogin, isAuthenticated }) => {
         />
         <Button type='submit'>Submit</Button>
         <ErrorMessage message={responseError} />
-        {/* Display error message */}
         <p className='login-to-register-text'>
           Don&apos;t have an account? <br />
           Click{' '}

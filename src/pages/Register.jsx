@@ -4,8 +4,11 @@ import { InputField } from '../components/InputField/InputField.styled';
 import { Button } from '../components/Button/Button.styled';
 import { Link, useNavigate } from 'react-router-dom';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { useAuth } from '../hooks/useAuth';
 
-export const Register = ({ isAuthenticated }) => {
+export const Register = () => {
+  const { isAuthenticated } = useAuth();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -54,7 +57,7 @@ export const Register = ({ isAuthenticated }) => {
 
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0; // Return true if there are no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const isValidEmail = (email) => {

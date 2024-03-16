@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
-export const NavItem = ({ name, url, closeSidebar, handleLogout, icon }) => {
+export const NavItem = ({ name, url, closeSidebar, icon }) => {
+  const { handleLogout } = useAuth();
+
   const handleClick = () => {
     if (handleLogout) {
       handleLogout();
