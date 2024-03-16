@@ -6,12 +6,10 @@ export const NavItem = ({ name, url, closeSidebar, icon }) => {
   const { handleLogout } = useAuth();
 
   const handleClick = () => {
-    if (handleLogout) {
+    if (name === 'Logout' && handleLogout) {
       handleLogout();
-      closeSidebar();
-    } else {
-      closeSidebar();
     }
+    closeSidebar();
   };
   return (
     <>
