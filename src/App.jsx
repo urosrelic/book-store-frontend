@@ -9,6 +9,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthProvider';
 import { Books } from './pages/Books';
+import { Dashboard } from './pages/Dashboard';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route element={<PrivateRoutes />}></Route>
+            <Route element={<PrivateRoutes />}>
+              <Route path='/dashboard' element={<Dashboard />} />
+            </Route>
             <Route path='/books' element={<Books />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import CancelIcon from '@mui/icons-material/Cancel';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import HomeIcon from '@mui/icons-material/Home';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
@@ -25,9 +26,12 @@ export const Sidebar = ({ isOpen, onClose }) => {
         <div className='sidebar-links'>
           {isAuthenticated && (
             <div className='sidebar-authenticated'>
-              <div className='authenticated-user'>
-                Welcome back: {currentUser.username}
-              </div>
+              <NavItem
+                name='Dashboard'
+                url='/dashboard'
+                closeSidebar={onClose}
+                icon={<DashboardIcon />}
+              />
               <NavItem
                 name={'Logout'}
                 closeSidebar={onClose}
@@ -46,6 +50,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
               />
             </div>
           )}
+
           {/* Always show */}
           <NavItem
             name={'Home'}
