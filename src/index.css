@@ -650,17 +650,6 @@ body {
     font-size: 1.2rem;
   }
 
-  #get-started-btn {
-    width: 150px;
-    padding: 1rem;
-    font-size: 1.2rem;
-    background-color: #17242a;
-    color: #3aafa9;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-  }
-
   .book-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -678,6 +667,65 @@ body {
 @media only screen and (min-width: 768px) {
   .sidebar.open {
     width: 30%;
+  }
+
+  .home-container {
+    display: flex;
+  }
+
+  .home-main-text {
+    width: 60%;
+  }
+
+  .home-image {
+    width: 60%;
+  }
+
+  .home-image img {
+    width: 70%;
+  }
+
+  .home-paragraph {
+    width: 60%;
+    font-size: 1.2rem;
+  }
+
+  .book-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .book-item-image {
+    width: 100%;
+  }
+
+  .footer-site-logo {
+    width: 30%;
+  }
+
+  .book-details-img {
+    width: 35%;
+  }
+
+  .book-details-img img {
+    width: 100%;
+  }
+
+  .book-details-information {
+    width: 65%;
+  }
+
+  .book-details-edition,
+  .book-details-format,
+  .book-details-pages {
+    font-size: 1.3rem;
+  }
+
+  .book-description {
+    font-size: 1.2rem;
+  }
+
+  .book-details-quotes {
+    width: 100%;
   }
 }
 
