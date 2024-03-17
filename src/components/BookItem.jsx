@@ -1,7 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from './Button/Button.styled';
-
 export const BookItem = ({
-  id,
+  bookId,
   title,
   authors,
   description,
@@ -15,9 +15,17 @@ export const BookItem = ({
   quote2,
   quote3,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log(bookId);
+    navigate(`/books/book/${bookId}`);
+  };
+
   const buttonStyles = {
     width: '50%',
   };
+
   return (
     <div className='book'>
       <div className='book-image'>
@@ -26,7 +34,9 @@ export const BookItem = ({
       <span className='book-title'>{title}</span>
       <span className='book-author'>{authors}</span>
       <span className='book-categories'>Genres: {genres}</span>
-      <Button styles={buttonStyles}>See details</Button>
+      <Button styles={buttonStyles} onClick={handleClick}>
+        See details
+      </Button>
     </div>
   );
 };
