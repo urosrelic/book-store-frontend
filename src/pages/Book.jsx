@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
+import { BookDetails } from '../components/Book/BookDetails';
 import { useBookDetails } from '../hooks/useBookDetails';
-export const BookDetails = () => {
+export const Book = () => {
   const { bookId } = useParams(); // Get the bookId from the route parameters
   const { bookDetails, loading, error } = useBookDetails(bookId);
 
@@ -11,9 +12,9 @@ export const BookDetails = () => {
   // }, [bookDetails]);
 
   return (
-    <div className='book-details'>
+    <div className='book'>
       {bookDetails ? (
-        <div className='book-details-title'>{bookDetails.title}</div>
+        <BookDetails bookDetails={bookDetails} />
       ) : loading ? (
         <div className='book-details-loading'>
           <h1></h1>

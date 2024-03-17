@@ -8,7 +8,7 @@ import { PrivateRoutes } from './utils/PrivateRoutes';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthProvider';
-import { BookDetails } from './pages/BookDetails';
+import { Book } from './pages/Book';
 import { Books } from './pages/Books';
 import { Dashboard } from './pages/Dashboard';
 
@@ -24,7 +24,7 @@ function App() {
               <Route path='/dashboard' element={<Dashboard />} />
             </Route>
             <Route path='/books' element={<Books />} />
-            <Route path='/books/book/:bookId' element={<BookDetails />} />{' '}
+            <Route path='/books/book/:bookId' element={<Book />} />{' '}
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
           </Routes>
