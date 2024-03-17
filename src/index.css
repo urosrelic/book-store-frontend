@@ -332,7 +332,7 @@ body {
   color: #17242a;
 }
 
-/** BOOK-ITEM */
+/** BOOK ITEM */
 .book-item {
   width: 100%;
   height: 100%;
@@ -381,6 +381,49 @@ body {
   object-fit: cover;
   border: 5px solid #17242a;
   border-radius: 5px;
+}
+
+/** BOOK */
+.book {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/** BOOK DETAILS */
+.book-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-details-img {
+  width: 60%;
+}
+
+.book-details-img img {
+  width: 100%;
+}
+
+.book-details-title {
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.book-details-title span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #17242a;
 }
 
 /** ERROR MESSAGE */
