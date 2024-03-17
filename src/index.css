@@ -332,8 +332,8 @@ body {
   color: #17242a;
 }
 
-/** BOOK */
-.book {
+/** BOOK-ITEM */
+.book-item {
   width: 100%;
   height: 100%;
   border-radius: 15px;
@@ -345,7 +345,7 @@ body {
   text-align: center;
 }
 
-.book::after {
+.book-item::after {
   content: '';
   display: block;
   width: 100%;
@@ -354,28 +354,28 @@ body {
   margin: 1rem 0;
 }
 
-.book-title,
-.book-author,
-.book-categories {
+.book-item-title,
+.book-item-author,
+.book-item-categories {
   padding: 1rem;
 }
 
-.book-title {
+.book-item-title {
   color: #17242a;
   font-size: 2rem;
   font-weight: bold;
 }
 
-.book-author {
+.book-item-author {
   font-size: 1.5rem;
 }
 
-.book-image {
+.book-item-image {
   width: 100%;
   overflow: hidden;
 }
 
-.book-image img {
+.book-item-image img {
   width: 50%;
   height: 100%;
   object-fit: cover;
