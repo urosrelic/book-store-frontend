@@ -440,6 +440,9 @@ body {
 .book-details-information {
   padding: 0 0.5rem;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .book-details-information > div {
