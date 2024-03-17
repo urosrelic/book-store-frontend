@@ -27,13 +27,13 @@ export const BookItem = ({
   };
 
   return (
-    <div className='book'>
-      <div className='book-image'>
+    <div className='book-item'>
+      <div className='book-item-image'>
         <img src={imageUrl} />
       </div>
-      <span className='book-title'>{title}</span>
-      <span className='book-author'>{authors}</span>
-      <span className='book-categories'>Genres: {genres}</span>
+      <span className='book-item-title'>{title}</span>
+      <span className='book-item-author'>{authors}</span>
+      <span className='book-item-categories'>Genres: {genres}</span>
       <Button styles={buttonStyles} onClick={handleClick}>
         See details
       </Button>
