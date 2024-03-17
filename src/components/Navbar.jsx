@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 export const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1200);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1000);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -14,7 +14,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsWideScreen(window.innerWidth >= 1200);
+      setIsWideScreen(window.innerWidth >= 1000);
     };
 
     const handleScroll = () => {
