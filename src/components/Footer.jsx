@@ -1,19 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-
 export const Footer = () => {
-  const [date, setDate] = useState(new Date());
-
-  const getCurrentYear = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    return year;
-  };
-
-  useEffect(() => {
-    setDate(getCurrentYear());
-  }, []);
-
   return (
     <div className='footer'>
       <div className='footer-upper'>
