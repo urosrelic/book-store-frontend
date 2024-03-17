@@ -403,7 +403,7 @@ body {
 }
 
 .book-details-separator {
-  margin: 1rem 0;
+  margin: 1rem;
   width: 100%;
   outline: none;
   border: 1px solid #17242a;
@@ -505,7 +505,7 @@ body {
 }
 
 .footer-upper {
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -525,16 +525,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 50%;
-}
-
-.footer-media-links img {
-  margin: 0 0.4rem;
-  width: 16%;
 }
 
 .footer-lower {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   display: flex;
   align-items: center;
