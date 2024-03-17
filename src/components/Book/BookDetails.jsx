@@ -55,6 +55,7 @@ export const BookDetails = ({ bookDetails }) => {
               name='simple-controlled'
               value={bookDetails.rating}
               sx={{ ...ratingStyles }}
+              precision={0.5}
             />
           </div>
           <div className='book-details-buy'>
