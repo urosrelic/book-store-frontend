@@ -5,7 +5,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 import { BookItem } from './BookItem';
 
-import { useBooks } from '../hooks/useBooks';
+import { useBooks } from '../../hooks/useBooks';
 
 export const BookList = () => {
   const [page, setPage] = useState(0);
