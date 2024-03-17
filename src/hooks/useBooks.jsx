@@ -17,7 +17,13 @@ export const useBooks = (page, pageSize) => {
         setTotalPages(Math.ceil(res.data.totalElements / pageSize));
       } catch (error) {
         const { status, data } = error.response;
-        setError(`Error (${status}): ${data.message}`);
+        if (error.response && status === 500) {
+          setError('Internal Server Error: Please try again later.');
+        } else if (error.response) {
+          setError(`Error (${status}): ${data.message}`);
+        } else {
+          setError('Network Error: Please check your internet connection.');
+        }
         setLoading(false);
       }
     };
