@@ -625,6 +625,42 @@ body {
     width: 40%;
   }
 
+  .home-main-text {
+    width: 70%;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  .home-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+  }
+
+  .home-image img {
+    width: 80%;
+    border-radius: 5px;
+  }
+
+  .home-paragraph {
+    width: 70%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  #get-started-btn {
+    width: 150px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #17242a;
+    color: #3aafa9;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+
   .book-list {
     grid-template-columns: repeat(2, 1fr);
   }
