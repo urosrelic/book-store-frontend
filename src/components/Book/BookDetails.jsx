@@ -3,6 +3,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
+
 import Typography from '@mui/material/Typography';
 
 import { useState } from 'react';
@@ -21,16 +22,27 @@ export const BookDetails = ({ bookDetails }) => {
 
   return (
     <div className='book-details'>
-      <div className='book-details-img'>
-        <img src={bookDetails.imageUrl} />
+      <div className='book-details-container'>
+        <div className='book-details-name'>
+          <span className='book-details-title'>{bookDetails.title}</span>
+          <span className='book-details-authors'>{bookDetails.authors}</span>
+        </div>
       </div>
-      <div className='book-details-data'>
-        <div className='book-details-title'>
-          <span>{bookDetails.title}</span>
+      <div className='book-details-container'>
+        <div className='book-details-img'>
+          <img src={bookDetails.imageUrl} />
         </div>
-        <div className='book-details-authors'>
-          <span>{bookDetails.authors}</span>
+        <div className='book-details-information'>
+          <div className='book-details-edition'>
+            {bookDetails.edition === ''
+              ? 'No edition information available'
+              : bookDetails.edition}
+          </div>
+          <div className='book-details-format'>{bookDetails.format}</div>
+          <div className='book-details-pages'>{bookDetails.numPages} pages</div>
         </div>
+      </div>
+      <div className='book-details-container'>
         <div className='book-details-quotes'>
           <Accordion
             expanded={expanded === 'panel1'}
