@@ -627,27 +627,18 @@ body {
 
   .home-main-text {
     width: 70%;
-    text-align: center;
-    font-size: 2rem;
-    text-transform: uppercase;
   }
 
   .home-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 70%;
   }
 
   .home-image img {
     width: 80%;
-    border-radius: 5px;
   }
 
   .home-paragraph {
     width: 70%;
-    text-align: center;
-    font-size: 1.2rem;
   }
 
   .book-list {
@@ -656,7 +647,6 @@ body {
 
   .book-item-image {
     width: 100%;
-    overflow: hidden;
   }
 
   .footer-site-logo {
