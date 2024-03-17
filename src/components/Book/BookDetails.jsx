@@ -35,6 +35,7 @@ export const BookDetails = ({ bookDetails }) => {
           <span className='book-details-authors'>{bookDetails.authors}</span>
         </div>
       </div>
+
       <div className='book-details-container'>
         <div className='book-details-img'>
           <img src={bookDetails.imageUrl} />
@@ -61,12 +62,16 @@ export const BookDetails = ({ bookDetails }) => {
           </div>
         </div>
       </div>
+      {/* Separator Line */}
+      <hr className='book-details-separator' />
       <div className='book-details-container'>
         <div className='book-description'>
           <span>Description</span>
           <p>{bookDetails.description}</p>
         </div>
       </div>
+      {/* Separator Line */}
+      <hr className='book-details-separator' />
       <div className='book-details-container'>
         <div className='book-details-quotes'>
           <Accordion

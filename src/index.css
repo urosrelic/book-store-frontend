@@ -402,6 +402,13 @@ body {
   justify-content: center;
 }
 
+.book-details-separator {
+  margin: 1rem 0;
+  width: 100%;
+  outline: none;
+  border: 1px solid #17242a;
+}
+
 .book-details-container {
   margin-bottom: 1rem;
   width: 100%;
