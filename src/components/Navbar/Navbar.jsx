@@ -9,31 +9,26 @@ import { useAuth } from '../../hooks/useAuth';
 import { NavItem } from '../NavItem/NavItem';
 import { Sidebar } from '../Sidebar/Sidebar';
 
+import { useMediaQuery } from '@uidotdev/usehooks';
 import './Navbar.css';
 
 export const Navbar = () => {
   const { isAuthenticated } = useAuth();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1000);
+  const isWideScreen = useMediaQuery('only screen and (min-width: 1000px)');
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsWideScreen(window.innerWidth >= 1000);
-    };
-
     const handleScroll = () => {
       setSticky(window.scrollY >= 20);
     };
 
-    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
