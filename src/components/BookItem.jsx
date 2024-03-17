@@ -1,20 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from './Button/Button.styled';
-export const BookItem = ({
-  bookId,
-  title,
-  authors,
-  description,
-  edition,
-  format,
-  numPages,
-  rating,
-  genres,
-  imageUrl,
-  quote1,
-  quote2,
-  quote3,
-}) => {
+export const BookItem = ({ bookId, title, authors, genres, imageUrl }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
