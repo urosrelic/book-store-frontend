@@ -659,10 +659,6 @@ body {
     width: 30%;
   }
 
-  .home-container {
-    display: flex;
-  }
-
   .home-main-text {
     width: 60%;
   }
@@ -720,8 +716,76 @@ body {
 }
 
 @media only screen and (min-width: 1000px) {
-  .sidebar.open {
+  .sidebar {
+    display: none; /* Hide the sidebar on larger screens */
+  }
+
+  .hamburger-menu {
+    display: none; /* Hide the hamburger menu on larger screens */
+  }
+
+  .nav-item {
+    margin: 0 1rem;
+    width: 100px;
+    color: #3aafa9;
+    background-color: #17242a;
+  }
+
+  .home-container {
+    width: 100%;
+    margin: auto;
+    flex-direction: row;
+  }
+
+  .home-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .home-image {
+    width: 50%;
+  }
+
+  .book-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-site-logo {
+    width: 15%;
+  }
+
+  .footer-lower {
+    font-size: 0.8rem;
+  }
+
+  .footer-media-links {
+    width: 20%;
+    justify-content: space-between;
+  }
+
+  .book-details-img {
     width: 25%;
+  }
+
+  .book-details-img img {
+    width: 100%;
+  }
+
+  .book-details-information {
+    width: 75%;
+  }
+
+  .book-details-edition,
+  .book-details-format,
+  .book-details-pages {
+    font-size: 1.4rem;
+  }
+
+  .book-description {
+    font-size: 1.1rem;
   }
 }
 
