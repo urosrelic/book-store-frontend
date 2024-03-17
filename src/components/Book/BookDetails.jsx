@@ -3,6 +3,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
+import Rating from '@mui/material/Rating';
 
 import Typography from '@mui/material/Typography';
 
@@ -40,6 +41,9 @@ export const BookDetails = ({ bookDetails }) => {
           </div>
           <div className='book-details-format'>{bookDetails.format}</div>
           <div className='book-details-pages'>{bookDetails.numPages} pages</div>
+          <div className='book-details-rating'>
+            <Rating name='simple-controlled' value={bookDetails.rating} />
+          </div>
         </div>
       </div>
       <div className='book-details-container'>
