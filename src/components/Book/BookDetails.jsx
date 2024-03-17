@@ -62,6 +62,12 @@ export const BookDetails = ({ bookDetails }) => {
         </div>
       </div>
       <div className='book-details-container'>
+        <div className='book-description'>
+          <span>Description</span>
+          <p>{bookDetails.description}</p>
+        </div>
+      </div>
+      <div className='book-details-container'>
         <div className='book-details-quotes'>
           <Accordion
             expanded={expanded === 'panel1'}
