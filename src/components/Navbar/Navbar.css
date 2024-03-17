@@ -1,5 +1,8 @@
 /** NAVBAR */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   padding: 1rem;
   color: #def2f1;
   width: 100%;
@@ -14,9 +17,6 @@
 }
 
 .navbar.sticky {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
   background-color: #17242a;
 }
 
