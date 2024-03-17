@@ -665,6 +665,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .book-item-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
   .footer-site-logo {
     width: 30%;
   }
