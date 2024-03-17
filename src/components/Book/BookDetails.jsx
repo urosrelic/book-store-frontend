@@ -7,6 +7,8 @@ import Rating from '@mui/material/Rating';
 
 import Typography from '@mui/material/Typography';
 
+import { Button } from '../Button/Button.styled';
+
 import { useState } from 'react';
 
 export const BookDetails = ({ bookDetails }) => {
@@ -19,6 +21,10 @@ export const BookDetails = ({ bookDetails }) => {
   const accordionStyles = {
     backgroundColor: '#17242a',
     color: '#3aafa9',
+  };
+
+  const ratingStyles = {
+    fontSize: '1.3rem',
   };
 
   return (
@@ -42,7 +48,16 @@ export const BookDetails = ({ bookDetails }) => {
           <div className='book-details-format'>{bookDetails.format}</div>
           <div className='book-details-pages'>{bookDetails.numPages} pages</div>
           <div className='book-details-rating'>
-            <Rating name='simple-controlled' value={bookDetails.rating} />
+            <span id='rating-text'>Rating:</span>
+            <span id='rating-value'>{bookDetails.rating}</span>
+            <Rating
+              name='simple-controlled'
+              value={bookDetails.rating}
+              sx={{ ...ratingStyles }}
+            />
+          </div>
+          <div className='book-details-buy'>
+            <Button>Buy</Button>
           </div>
         </div>
       </div>
