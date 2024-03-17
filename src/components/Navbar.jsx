@@ -1,9 +1,16 @@
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import HomeIcon from '@mui/icons-material/Home';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
 import { useEffect, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import { NavItem } from './NavItem';
 import { Sidebar } from './Sidebar';
 
-import MenuIcon from '@mui/icons-material/Menu';
 export const Navbar = () => {
+  const { isAuthenticated } = useAuth();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1000);
@@ -35,15 +42,24 @@ export const Navbar = () => {
         Book<span>store</span>
       </h1>
 
-      {/* Render links only on wide screens */}
-      {isWideScreen && (
-        <div className='navbar-links'>
-          <NavItem name={'Home'} url={'/'} />
-          <NavItem name={'Books'} url={'/books'} />
-          <NavItem name={'Register'} url={'/register'} />
-          <NavItem name={'Login'} url={'/login'} />
-        </div>
-      )}
+      <div className='navbar-links'>
+        <NavItem name='Home' url='/' icon={<HomeIcon />} />
+        <NavItem name='Books' url='/books' icon={<LibraryBooksIcon />} />
+        {isAuthenticated ? (
+          <>
+            <NavItem
+              name={'Dashboard'}
+              url={'/dashboard'}
+              icon={<DashboardIcon />}
+            />
+            <NavItem name={'Logout'} url={'/'} icon={<LogoutIcon />} />
+          </>
+        ) : (
+          <>
+            <NavItem name={'Login'} url={'/login'} icon={<LoginIcon />} />
+          </>
+        )}
+      </div>
 
       <div className='hamburger-menu' onClick={toggleSidebar}>
         <MenuIcon fontSize={'large'} />
