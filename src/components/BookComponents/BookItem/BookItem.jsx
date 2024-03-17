@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../Button/Button.styled';
+import { Button } from '../../Button/Button.styled';
+
+import './BookItem.css';
 export const BookItem = ({ bookId, title, authors, genres, imageUrl }) => {
   const navigate = useNavigate();
 

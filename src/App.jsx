@@ -1,16 +1,16 @@
-import { Footer } from './components/Footer';
-import { Navbar } from './components/Navbar';
-import { Home } from './pages/Home';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
+import { Footer } from './components/Footer/Footer';
+import { Navbar } from './components/Navbar/Navbar';
+import { Home } from './pages/Home/Home';
+import { Login } from './pages/Login/Login';
+import { Register } from './pages/Register/Register';
 import { PrivateRoutes } from './utils/PrivateRoutes';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthProvider';
-import { Book } from './pages/Book';
-import { Books } from './pages/Books';
-import { Dashboard } from './pages/Dashboard';
+import { Book } from './pages/Book/Book';
+import { Books } from './pages/Books/Books';
+import { Dashboard } from './pages/Dashboard/Dashboard';
 
 function App() {
   return (

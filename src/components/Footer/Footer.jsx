@@ -2,6 +2,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
+import './Footer.css';
+
 export const Footer = () => {
   const iconStyles = {
     fontSize: '2rem',

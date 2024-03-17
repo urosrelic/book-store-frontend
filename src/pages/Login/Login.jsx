@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '../components/Button/Button.styled';
-import { ErrorMessage } from '../components/ErrorMessage';
-import { InputField } from '../components/InputField/InputField.styled';
-import { useAuth } from '../hooks/useAuth';
+import { Button } from '../../components/Button/Button.styled';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import { InputField } from '../../components/InputField/InputField.styled';
+import { useAuth } from '../../hooks/useAuth';
+
+import './Login.css';
 
 export const Login = () => {
   const { handleLogin, isAuthenticated } = useAuth();

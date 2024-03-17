@@ -1,0 +1,24 @@
+/** USER DETAILS */
+.user-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #17242a;
+  color: #3aafa9;
+  border-radius: 5px;
+}
+
+.user-avatar,
+.user-information {
+  padding: 0.3rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#account-icon {
+  font-size: 6rem;
+  color: #3aafa9;
+}

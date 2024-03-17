@@ -6,8 +6,10 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
-import { useAuth } from '../hooks/useAuth';
-import { NavItem } from './NavItem';
+import { useAuth } from '../../hooks/useAuth';
+import { NavItem } from '../NavItem/NavItem';
+
+import './Sidebar.css';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated } = useAuth();

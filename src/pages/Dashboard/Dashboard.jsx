@@ -1,4 +1,6 @@
-import { UserDetails } from '../components/User/UserDetails';
+import { UserDetails } from '../../components/UserComponents/UserDetails/UserDetails';
+
+import './Dashboard.css';
 
 export const Dashboard = () => {
   return (

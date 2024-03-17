@@ -7,9 +7,11 @@ import Rating from '@mui/material/Rating';
 
 import Typography from '@mui/material/Typography';
 
-import { Button } from '../Button/Button.styled';
+import { Button } from '../../Button/Button.styled';
 
 import { useState } from 'react';
+
+import './BookDetails.css';
 
 export const BookDetails = ({ bookDetails }) => {
   const [expanded, setExpanded] = useState(false);

@@ -1,4 +1,6 @@
-import { BookList } from '../components/Book/BookList';
+import { BookList } from '../../components/BookComponents/BookList/BookList';
+
+import './Books.css';
 
 export const Books = () => {
   return (

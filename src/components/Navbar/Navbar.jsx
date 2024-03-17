@@ -5,9 +5,11 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import { NavItem } from './NavItem';
-import { Sidebar } from './Sidebar';
+import { useAuth } from '../../hooks/useAuth';
+import { NavItem } from '../NavItem/NavItem';
+import { Sidebar } from '../Sidebar/Sidebar';
+
+import './Navbar.css';
 
 export const Navbar = () => {
   const { isAuthenticated } = useAuth();

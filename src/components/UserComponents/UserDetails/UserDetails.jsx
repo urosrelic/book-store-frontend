@@ -1,5 +1,8 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../../hooks/useAuth';
+
+import './UserDetails.css';
+
 export const UserDetails = () => {
   const { currentUser } = useAuth();
   return (

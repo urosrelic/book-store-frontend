@@ -1,0 +1,134 @@
+/** SIDEBAR */
+.sidebar {
+  display: flex;
+  width: 0;
+  height: 100%;
+  background-color: #17242a;
+  color: #def2f1;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.35s ease-in-out;
+}
+
+.sidebar.open {
+  width: 80%;
+}
+
+.sidebar-close-btn {
+  width: 100%;
+  padding-top: 0.3rem;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar-title span {
+  color: #3aafa9;
+}
+
+.sidebar-close-btn-icon {
+  font-size: 2rem;
+}
+
+.sidebar-content {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-authenticated,
+.sidebar-not-authenticated {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-authenticated::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #def2f1;
+  margin: 1rem 0;
+}
+
+/** SEARCH */
+.search-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.search-container-items {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-container::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #def2f1;
+  margin-top: 1rem;
+}
+
+.search-button {
+  width: 10%;
+}
+
+.search-box {
+  color: #17242a;
+  margin-right: 0.5rem;
+  width: 90%;
+  padding: 0.5rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  background-color: #37a495;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.search-box input {
+  width: 90%;
+  font-size: 1rem;
+  margin-left: 5px;
+  background-color: #37a495;
+  outline: none;
+  border: none;
+}
+
+.search-box input::placeholder {
+  color: rgb(65, 62, 62);
+}
+
+.clear-text-btn {
+  width: 10%;
+  opacity: 0;
+}
+
+.clear-text-btn.active {
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}

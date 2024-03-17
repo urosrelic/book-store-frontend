@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import './Home.css';
 export const Home = () => {
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1000);
 

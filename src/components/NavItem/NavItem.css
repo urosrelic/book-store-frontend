@@ -1,0 +1,30 @@
+/** NAV ITEM */
+.nav-item {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #37a495;
+  text-decoration: none;
+  color: #17242a;
+  border-radius: 5px;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-item-icon,
+.nav-item-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item-icon {
+  width: 20%;
+}
+
+.nav-item-name {
+  width: 80%;
+}

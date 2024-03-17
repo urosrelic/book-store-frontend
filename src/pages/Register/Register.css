@@ -1,0 +1,24 @@
+/** REGISTER */
+.register-container {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-to-login-text {
+  text-align: center;
+}
+
+.register-to-login-text span {
+  color: #101a1f;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* 
+#register-form {
+  width: 50%;
+} */

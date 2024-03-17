@@ -1,0 +1,41 @@
+/** NAVBAR */
+.navbar {
+  padding: 1rem;
+  color: #def2f1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-links {
+  display: none;
+}
+
+.navbar.sticky {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: #17242a;
+}
+
+.navbar.sticky span {
+  color: #3aafa9;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-title {
+  color: #def2f1;
+}
+
+.navbar-title span {
+  color: #17242a;
+}
+
+.hamburger-menu {
+  display: flex;
+  align-items: center;
+  font-size: 2.5em;
+  cursor: pointer;
+}

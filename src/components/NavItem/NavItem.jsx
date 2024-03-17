@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
+
+import './NavItem.css';
 
 export const NavItem = ({ name, url, closeSidebar, icon }) => {
   const { handleLogout } = useAuth();

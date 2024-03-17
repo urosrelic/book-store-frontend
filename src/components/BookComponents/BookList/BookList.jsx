@@ -3,9 +3,11 @@ import { useState } from 'react';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
-import { BookItem } from './BookItem';
+import { BookItem } from '../BookItem/BookItem';
 
-import { useBooks } from '../../hooks/useBooks';
+import { useBooks } from '../../../hooks/useBooks';
+
+import './BookList.css';
 
 export const BookList = () => {
   const [page, setPage] = useState(0);

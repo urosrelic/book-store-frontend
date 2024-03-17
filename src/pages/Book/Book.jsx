@@ -1,6 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { BookDetails } from '../components/Book/BookDetails';
-import { useBookDetails } from '../hooks/useBookDetails';
+import { BookDetails } from '../../components/BookComponents/BookDetails/BookDetails';
+import { useBookDetails } from '../../hooks/useBookDetails';
+
+import './Book.css';
+
 export const Book = () => {
   const { bookId } = useParams(); // Get the bookId from the route parameters
   const { bookDetails, loading, error } = useBookDetails(bookId);
