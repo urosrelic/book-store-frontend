@@ -1,33 +1,21 @@
 /* eslint-disable react/prop-types */
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 import Rating from '@mui/material/Rating';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Button } from '@mui/material';
-import Typography from '@mui/material/Typography';
-
-import { useState } from 'react';
 
 import './BookDetails.css';
 
+import { useMediaQuery } from '@uidotdev/usehooks';
 import { useNavigate } from 'react-router-dom';
+import { BookQuotes } from '../BookQuotes/BookQuotes';
 
 export const BookDetails = ({ bookDetails }) => {
-  const [expanded, setExpanded] = useState(false);
-
   const navigate = useNavigate();
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
-  const accordionStyles = {
-    backgroundColor: '#17242a',
-    color: '#3aafa9',
-  };
+  const isWideScreen = useMediaQuery('only screen and (min-width: 1024px)');
 
   const ratingStyles = {
     fontSize: '1.3rem',
@@ -38,24 +26,20 @@ export const BookDetails = ({ bookDetails }) => {
   };
 
   const backButtonStyles = {
-    width: '40%',
-    backgroundColor: '#17242a',
-    color: 'white',
+    color: '#17242a',
+    padding: '0',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     '&:hover': {
-      color: '#3aafa9',
-      backgroundColor: '#17242a', // Keep the same background color on hover
+      backgroundColor: 'transparent',
     },
     '&:focus': {
-      color: '#3aafa9', // Keep the same background color on hover
-      backgroundColor: '#17242a',
+      backgroundColor: 'transparent',
     },
   };
 
-  const buyButtonStyles = {
-    width: '100%',
+  const cartButtonStyles = {
     backgroundColor: '#17242a',
     color: 'white',
     '&:hover': {
@@ -68,110 +52,130 @@ export const BookDetails = ({ bookDetails }) => {
     },
   };
 
-  return (
-    <div className='book-details'>
-      <div className='book-details-container'>
-        <Button onClick={handleRedirect} sx={{ ...backButtonStyles }}>
-          <ArrowBackIcon />
-          Go back
-        </Button>
-      </div>
-      <div className='book-details-container'>
-        <div className='book-details-name'>
-          <span className='book-details-title'>{bookDetails.title}</span>
-          <span className='book-details-authors'>{bookDetails.authors}</span>
+  const mobileLayout = () => {
+    return (
+      <>
+        {' '}
+        <div className='back-button-container'>
+          <Button onClick={handleRedirect} sx={{ ...backButtonStyles }}>
+            <ArrowBackIcon />
+            Go back
+          </Button>
         </div>
-      </div>
+        <div className='book-details'>
+          <div className='book-details-grid-container'>
+            <div className='book-details-container'>
+              <div className='book-details-img'>
+                <img src={bookDetails.imageUrl} />
+              </div>
+            </div>
+            <div className='book-details-container'>
+              <div className='book-details-title'>{bookDetails.title}</div>
+              <div className='book-details-authors'>{bookDetails.authors}</div>
+              <div className='book-details-edition'>
+                {bookDetails.edition === ''
+                  ? 'No edition information available'
+                  : bookDetails.edition}
+              </div>
+              <div className='book-details-pages'>
+                {bookDetails.numPages} pages
+              </div>
+              <div className='book-details-rating'>
+                <span id='rating-value'>{bookDetails.rating}</span>
+                <Rating
+                  name='simple-controlled'
+                  value={bookDetails.rating}
+                  sx={{ ...ratingStyles }}
+                  precision={0.5}
+                />
+              </div>
+              <div className='book-details-buy'>
+                <Button sx={{ ...cartButtonStyles }}>
+                  <AddShoppingCartIcon />
+                  Add to cart
+                </Button>
+              </div>
+              <hr className='book-details-separator' />
+              <div className='book-details-quotes'>
+                <BookQuotes
+                  quote1={bookDetails.quote1}
+                  quote2={bookDetails.quote2}
+                  quote3={bookDetails.quote3}
+                />
+              </div>
+              <div className='book-details-description'>
+                <hr className='book-details-separator' />
+                <p>{bookDetails.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
 
-      <div className='book-details-container'>
-        <div className='book-details-img'>
-          <img src={bookDetails.imageUrl} />
+  const wideScreenLayout = () => {
+    return (
+      <>
+        <div className='back-button-container'>
+          <Button onClick={handleRedirect} sx={{ ...backButtonStyles }}>
+            <ArrowBackIcon />
+            Go back
+          </Button>
         </div>
-        <div className='book-details-information'>
-          <div className='book-details-edition'>
-            {bookDetails.edition === ''
-              ? 'No edition information available'
-              : bookDetails.edition}
+        <div className='book-details'>
+          <div className='book-details-grid-container'>
+            <div className='book-details-container-left'>
+              <div className='book-details-img'>
+                <img src={bookDetails.imageUrl} />
+              </div>
+              <div className='book-details-rating'>
+                <span id='rating-value'>{bookDetails.rating}</span>
+                <Rating
+                  name='simple-controlled'
+                  value={bookDetails.rating}
+                  sx={{ ...ratingStyles }}
+                  precision={0.5}
+                />
+              </div>
+              <div className='book-details-buy'>
+                <Button sx={{ ...cartButtonStyles }}>
+                  <AddShoppingCartIcon />
+                  Add to cart
+                </Button>
+              </div>
+            </div>
+            <div className='book-details-container-right'>
+              <div className='book-details-title'>{bookDetails.title}</div>
+              <div className='book-details-authors'>{bookDetails.authors}</div>
+              <div className='book-details-edition'>
+                {bookDetails.edition === ''
+                  ? 'No edition information available'
+                  : bookDetails.edition}
+              </div>
+              <div className='book-details-pages'>
+                {bookDetails.numPages} pages
+              </div>
+
+              <hr className='book-details-separator' />
+
+              <div className='book-details-description'>
+                <hr className='book-details-separator' />
+                <p>{bookDetails.description}</p>
+              </div>
+              <div className='book-details-quotes'>
+                <BookQuotes
+                  quote1={bookDetails.quote1}
+                  quote2={bookDetails.quote2}
+                  quote3={bookDetails.quote3}
+                />
+              </div>
+            </div>
           </div>
-          <div className='book-details-format'>{bookDetails.format}</div>
-          <div className='book-details-pages'>{bookDetails.numPages} pages</div>
-          <div className='book-details-rating'>
-            <span id='rating-text'>Rating:</span>
-            <span id='rating-value'>{bookDetails.rating}</span>
-            <Rating
-              name='simple-controlled'
-              value={bookDetails.rating}
-              sx={{ ...ratingStyles }}
-              precision={0.5}
-            />
-          </div>
-          <div className='book-details-buy'>
-            <Button sx={{ ...buyButtonStyles }}>Buy</Button>
-          </div>
         </div>
-      </div>
-      {/* Separator Line */}
-      <hr className='book-details-separator' />
-      <div className='book-details-container'>
-        <div className='book-details-quotes'>
-          <Accordion
-            expanded={expanded === 'panel1'}
-            onChange={handleChange('panel1')}
-            sx={{ ...accordionStyles }}
-          >
-            <AccordionSummary
-              aria-controls='panel1d-content'
-              id='panel1d-header'
-              expandIcon={<ArrowDropDownIcon />}
-            >
-              <Typography>Quote #1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{bookDetails.quote1}</Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === 'panel2'}
-            onChange={handleChange('panel2')}
-            sx={{ ...accordionStyles }}
-          >
-            <AccordionSummary
-              aria-controls='panel2d-content'
-              id='panel2d-header'
-              expandIcon={<ArrowDropDownIcon />}
-            >
-              <Typography>Quote #2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{bookDetails.quote2}</Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion
-            expanded={expanded === 'panel3'}
-            onChange={handleChange('panel3')}
-            sx={{ ...accordionStyles }}
-          >
-            <AccordionSummary
-              aria-controls='panel3d-content'
-              id='panel3d-header'
-              expandIcon={<ArrowDropDownIcon />}
-            >
-              <Typography>Quote #3</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{bookDetails.quote3}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        </div>
-      </div>
-      {/* Separator Line */}
-      <hr className='book-details-separator' />
-      <div className='book-details-container'>
-        <div className='book-description'>
-          <span>Description</span>
-          <p>{bookDetails.description}</p>
-        </div>
-      </div>
-    </div>
-  );
+      </>
+    );
+  };
+
+  return isWideScreen ? wideScreenLayout() : mobileLayout();
 };
