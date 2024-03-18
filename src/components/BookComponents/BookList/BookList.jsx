@@ -7,6 +7,7 @@ import { BookItem } from '../BookItem/BookItem';
 
 import { useBooks } from '../../../hooks/useBooks';
 
+import { Button } from '@mui/material';
 import './BookList.css';
 
 export const BookList = () => {
@@ -32,21 +33,23 @@ export const BookList = () => {
         )}
       </div>
       <div className='book-pagination'>
-        <ArrowCircleLeftIcon
+        <Button
           onClick={() => setPage((prevPage) => prevPage - 1)}
           disabled={page === 0}
-          fontSize={'large'}
           sx={sxProp}
-        />
+        >
+          <ArrowCircleLeftIcon fontSize={'large'} />
+        </Button>
         <div className='pages'>
           Page <span>{page + 1}</span> of {totalPages}
         </div>
-
-        <ArrowCircleRightIcon
+        <Button
           onClick={() => setPage((prevPage) => prevPage + 1)}
-          fontSize={'large'}
           sx={sxProp}
-        />
+          disabled={page === totalPages - 1}
+        >
+          <ArrowCircleRightIcon fontSize={'large'} />
+        </Button>
       </div>
     </div>
   );
