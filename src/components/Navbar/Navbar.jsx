@@ -45,10 +45,7 @@ export const Navbar = () => {
       </h1>
 
       <div className='navbar-links'>
-        <div
-          className={sticky ? 'navbar-link sticky' : 'navbar-link'}
-          onClick={handleLogout}
-        >
+        <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
           <Link to='/'>
             <HomeIcon sx={{ ...iconStyles }} />
           </Link>
@@ -62,10 +59,7 @@ export const Navbar = () => {
 
         {isAuthenticated ? (
           <>
-            <div
-              className={sticky ? 'navbar-link sticky' : 'navbar-link'}
-              onClick={handleLogout}
-            >
+            <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
               <Link to='/dashboard'>
                 <DashboardIcon sx={{ ...iconStyles }} />
               </Link>
