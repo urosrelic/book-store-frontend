@@ -159,16 +159,6 @@ body {
     background-color: #17242a;
   }
 
-  .home-container {
-    width: 100%;
-    margin: auto;
-    flex-direction: row;
-  }
-
-  .home-image {
-    width: 50%;
-  }
-
   .book-list {
     grid-template-columns: repeat(3, 1fr);
   }
