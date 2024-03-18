@@ -1,4 +1,5 @@
 /** NAVBAR */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -6,6 +7,7 @@
   padding: 1rem;
   color: #def2f1;
   width: 100%;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,6 +16,31 @@
 
 .navbar-links {
   display: none;
+}
+
+.navbar-link {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  padding: 0.6rem;
+  background-color: #17242a;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-link * {
+  color: #3aafa9;
+}
+
+.navbar-link.sticky {
+  color: #17242a;
+  background-color: #3aafa9;
+}
+
+.navbar-link.sticky * {
+  color: #17242a;
 }
 
 .navbar.sticky {
@@ -40,12 +67,4 @@
   align-items: center;
   font-size: 2.5em;
   cursor: pointer;
-}
-
-.home-content {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
 }

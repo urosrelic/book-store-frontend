@@ -6,17 +6,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { NavItem } from '../NavItem/NavItem';
 import { Sidebar } from '../Sidebar/Sidebar';
 
 import { useMediaQuery } from '@uidotdev/usehooks';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export const Navbar = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, handleLogout } = useAuth();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const isWideScreen = useMediaQuery('only screen and (min-width: 1000px)');
+  const isWideScreen = useMediaQuery('only screen and (min-width: 1024px)');
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -33,6 +33,11 @@ export const Navbar = () => {
     };
   }, []);
 
+  const iconStyles = {
+    fontSize: '1.5rem',
+    color: '#17242a',
+  };
+
   return (
     <div className={sticky ? 'navbar sticky' : 'navbar'}>
       <h1 className='navbar-title'>
@@ -40,20 +45,51 @@ export const Navbar = () => {
       </h1>
 
       <div className='navbar-links'>
-        <NavItem name='Home' url='/' icon={<HomeIcon />} />
-        <NavItem name='Books' url='/books' icon={<LibraryBooksIcon />} />
+        <div
+          className={sticky ? 'navbar-link sticky' : 'navbar-link'}
+          onClick={handleLogout}
+        >
+          <Link to='/'>
+            <HomeIcon sx={{ ...iconStyles }} />
+          </Link>
+        </div>
+        <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
+          {' '}
+          <Link to='/books'>
+            <LibraryBooksIcon sx={{ ...iconStyles }} />
+          </Link>
+        </div>
+
         {isAuthenticated ? (
           <>
-            <NavItem
-              name={'Dashboard'}
-              url={'/dashboard'}
-              icon={<DashboardIcon />}
-            />
-            <NavItem name={'Logout'} url={'/'} icon={<LogoutIcon />} />
+            <div
+              className={sticky ? 'navbar-link sticky' : 'navbar-link'}
+              onClick={handleLogout}
+            >
+              <Link to='/dashboard'>
+                <DashboardIcon sx={{ ...iconStyles }} />
+              </Link>
+            </div>
+            <div
+              className={sticky ? 'navbar-link sticky' : 'navbar-link'}
+              onClick={handleLogout}
+            >
+              <Link to='/'>
+                <LogoutIcon sx={{ ...iconStyles }} />
+              </Link>
+              Logout
+            </div>
           </>
         ) : (
           <>
-            <NavItem name={'Login'} url={'/login'} icon={<LoginIcon />} />
+            <div
+              className={sticky ? 'navbar-link sticky' : 'navbar-link'}
+              onClick={handleLogout}
+            >
+              <Link to='/login'>
+                <LoginIcon sx={{ ...iconStyles }} />
+              </Link>
+            </div>
           </>
         )}
       </div>
