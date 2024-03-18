@@ -36,7 +36,7 @@ export const Navbar = () => {
   return (
     <div className={sticky ? 'navbar sticky' : 'navbar'}>
       <h1 className='navbar-title'>
-        Book<span>store</span>
+        book<span>store</span>
       </h1>
 
       <div className='navbar-links'>
