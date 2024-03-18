@@ -17,7 +17,7 @@ export const BookItem = ({ bookId, title, authors, genres, imageUrl }) => {
   return (
     <div className='book-item'>
       <div className='book-item-image'>
-        <img src={imageUrl} />
+        <img src={imageUrl} onClick={handleClick} />
       </div>
       <span className='book-item-title'>{title}</span>
       <span className='book-item-author'>{authors}</span>

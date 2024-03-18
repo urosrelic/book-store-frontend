@@ -44,6 +44,8 @@
 .book-item-image img {
   width: 50%;
   height: 100%;
+  cursor: pointer;
+
   object-fit: cover;
   border: 5px solid #17242a;
   border-radius: 5px;
