@@ -11,7 +11,7 @@
 }
 
 .footer-upper {
-  padding: 1rem;
+  padding: 0 1rem;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -20,7 +20,6 @@
 }
 
 .footer-site-logo {
-  width: 50%;
   font-weight: 500;
 }
 
