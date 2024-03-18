@@ -19,7 +19,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
           <h1 className='sidebar-title'>
-            Book<span>store</span>
+            book<span>store</span>
           </h1>
           <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>

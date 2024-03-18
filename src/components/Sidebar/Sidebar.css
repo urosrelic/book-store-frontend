@@ -28,8 +28,13 @@
   cursor: pointer;
 }
 
+.sidebar-title {
+  color: #ffff;
+  font-weight: 500;
+}
 .sidebar-title span {
   color: #3aafa9;
+  font-weight: 700;
 }
 
 .sidebar-close-btn-icon {

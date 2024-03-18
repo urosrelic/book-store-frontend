@@ -21,10 +21,12 @@
 
 .footer-site-logo {
   width: 50%;
+  font-weight: 500;
 }
 
-.footer-site-logo img {
-  width: 100%;
+.footer-site-logo span {
+  color: #3aafa9;
+  font-weight: 700;
 }
 
 .footer-media-links {

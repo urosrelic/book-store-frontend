@@ -12,9 +12,9 @@ export const Footer = () => {
   return (
     <div className='footer'>
       <div className='footer-upper'>
-        <div className='footer-site-logo'>
-          <img src='/public/logo.png' />
-        </div>
+        <h1 className='footer-site-logo'>
+          book<span>store</span>
+        </h1>
         <div className='footer-media-links'>
           <FacebookIcon sx={{ ...iconStyles }} />
           <LinkedInIcon sx={{ ...iconStyles }} />
