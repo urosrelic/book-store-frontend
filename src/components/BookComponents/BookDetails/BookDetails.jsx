@@ -5,16 +5,20 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Rating from '@mui/material/Rating';
 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
-
-import { Button } from '../../Button/Button.styled';
 
 import { useState } from 'react';
 
 import './BookDetails.css';
 
+import { useNavigate } from 'react-router-dom';
+
 export const BookDetails = ({ bookDetails }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -29,8 +33,49 @@ export const BookDetails = ({ bookDetails }) => {
     fontSize: '1.3rem',
   };
 
+  const handleRedirect = () => {
+    navigate('/books');
+  };
+
+  const backButtonStyles = {
+    width: '40%',
+    backgroundColor: '#17242a',
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    '&:hover': {
+      color: '#3aafa9',
+      backgroundColor: '#17242a', // Keep the same background color on hover
+    },
+    '&:focus': {
+      color: '#3aafa9', // Keep the same background color on hover
+      backgroundColor: '#17242a',
+    },
+  };
+
+  const buyButtonStyles = {
+    width: '100%',
+    backgroundColor: '#17242a',
+    color: 'white',
+    '&:hover': {
+      color: '#3aafa9',
+      backgroundColor: '#17242a', // Keep the same background color on hover
+    },
+    '&:focus': {
+      color: '#3aafa9', // Keep the same background color on hover
+      backgroundColor: '#17242a',
+    },
+  };
+
   return (
     <div className='book-details'>
+      <div className='book-details-container'>
+        <Button onClick={handleRedirect} sx={{ ...backButtonStyles }}>
+          <ArrowBackIcon />
+          Go back
+        </Button>
+      </div>
       <div className='book-details-container'>
         <div className='book-details-name'>
           <span className='book-details-title'>{bookDetails.title}</span>
@@ -61,16 +106,8 @@ export const BookDetails = ({ bookDetails }) => {
             />
           </div>
           <div className='book-details-buy'>
-            <Button>Buy</Button>
+            <Button sx={{ ...buyButtonStyles }}>Buy</Button>
           </div>
-        </div>
-      </div>
-      {/* Separator Line */}
-      <hr className='book-details-separator' />
-      <div className='book-details-container'>
-        <div className='book-description'>
-          <span>Description</span>
-          <p>{bookDetails.description}</p>
         </div>
       </div>
       {/* Separator Line */}
@@ -125,6 +162,14 @@ export const BookDetails = ({ bookDetails }) => {
               <Typography>{bookDetails.quote3}</Typography>
             </AccordionDetails>
           </Accordion>
+        </div>
+      </div>
+      {/* Separator Line */}
+      <hr className='book-details-separator' />
+      <div className='book-details-container'>
+        <div className='book-description'>
+          <span>Description</span>
+          <p>{bookDetails.description}</p>
         </div>
       </div>
     </div>
