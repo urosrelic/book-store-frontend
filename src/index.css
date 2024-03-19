@@ -130,12 +130,12 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* TODO svaki container posebno podesiti */
   .book-details-container-left {
     align-items: center;
   }
 
   .book-details-container-right {
+    padding-right: 5rem;
     align-items: flex-start;
   }
 
@@ -144,6 +144,14 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .book-details-title,
+  .book-details-authors,
+  .book-details-pages,
+  .book-details-edition,
+  .book-details-description {
+    text-align: start;
   }
 
   .book-details-img img {
@@ -185,12 +193,12 @@ body {
 /* DESKTOPS */
 @media only screen and (min-width: 1600px) {
   .book-details-img {
-    width: 70%;
+    width: 75%;
   }
 }
 
 @media only screen and (min-width: 1800px) {
   .book-details-img {
-    width: 60%;
+    width: 75%;
   }
 }
