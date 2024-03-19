@@ -15,7 +15,7 @@ import { BookQuotes } from '../BookQuotes/BookQuotes';
 export const BookDetails = ({ bookDetails }) => {
   const navigate = useNavigate();
 
-  const isWideScreen = useMediaQuery('only screen and (min-width: 1024px)');
+  const isWideScreen = useMediaQuery('only screen and (min-width: 768px)');
 
   const ratingStyles = {
     fontSize: '1.3rem',
