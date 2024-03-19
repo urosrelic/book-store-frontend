@@ -130,13 +130,9 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .book-details-container-left {
-    align-items: center;
-  }
-
-  .book-details-container-right {
-    padding-right: 5rem;
-    align-items: flex-start;
+  .book-details-grid-container {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .book-details-container-left,
@@ -144,6 +140,22 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .book-details-container-left {
+    flex: 0 0 40%;
+    position: sticky;
+    top: 100px;
+    align-items: center;
+    align-self: flex-start;
+  }
+
+  .book-details-container-right {
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 20px;
+    padding-right: 5rem;
+    align-items: flex-start;
   }
 
   .book-details-title,
