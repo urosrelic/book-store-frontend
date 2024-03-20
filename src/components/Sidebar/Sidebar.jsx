@@ -6,6 +6,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useAuth } from '../../hooks/useAuth';
 import { NavItem } from '../NavItem/NavItem';
 
@@ -14,13 +15,28 @@ import './Sidebar.css';
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated } = useAuth();
 
+  const cartIconStyles = {
+    fontSize: '2.3rem',
+  };
+
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
-          <h1 className='sidebar-title'>
-            book<span>store</span>
-          </h1>
+          {isAuthenticated ? (
+            <div className='sidebar-cart'>
+              <ShoppingCartIcon
+                className='cart-icon'
+                sx={{ ...cartIconStyles }}
+              />
+              <div className='cart-item-count'>0</div>
+            </div>
+          ) : (
+            <div className='sidebar-title'>
+              book<span>store</span>
+            </div>
+          )}
+
           <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
 
