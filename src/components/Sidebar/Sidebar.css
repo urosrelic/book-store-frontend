@@ -39,6 +39,11 @@
   border-radius: 5px;
 }
 
+.sidebar-cart a {
+  text-decoration: none;
+  color: #3aafa9;
+}
+
 .cart-item-count {
   font-size: 1rem;
   border-radius: 50%;

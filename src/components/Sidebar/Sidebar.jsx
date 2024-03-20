@@ -10,10 +10,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useAuth } from '../../hooks/useAuth';
 import { NavItem } from '../NavItem/NavItem';
 
+import { Link } from 'react-router-dom';
+import { useCart } from '../../hooks/useCart';
 import './Sidebar.css';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated } = useAuth();
+  const { cartCount } = useCart();
 
   const cartIconStyles = {
     fontSize: '2.3rem',
@@ -24,12 +27,14 @@ export const Sidebar = ({ isOpen, onClose }) => {
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
           {isAuthenticated ? (
-            <div className='sidebar-cart'>
-              <ShoppingCartIcon
-                className='cart-icon'
-                sx={{ ...cartIconStyles }}
-              />
-              <div className='cart-item-count'>0</div>
+            <div className='sidebar-cart' onClick={onClose}>
+              <Link to='/cart'>
+                <ShoppingCartIcon
+                  className='cart-icon'
+                  sx={{ ...cartIconStyles }}
+                />
+              </Link>
+              <div className='cart-item-count'>{cartCount}</div>
             </div>
           ) : (
             <div className='sidebar-title'>

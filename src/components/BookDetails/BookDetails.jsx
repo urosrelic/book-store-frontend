@@ -10,10 +10,16 @@ import './BookDetails.css';
 
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useNavigate } from 'react-router-dom';
+import { CartProvider } from '../../contexts/CartProvider';
 import { BookQuotes } from '../BookQuotes/BookQuotes';
+
+import { useAuth } from '../../hooks/useAuth';
+import { useCart } from '../../hooks/useCart';
 
 export const BookDetails = ({ bookDetails }) => {
   const navigate = useNavigate();
+  const { handleAddItem } = useCart();
+  const { currentUser } = useAuth();
 
   const isWideScreen = useMediaQuery('only screen and (min-width: 768px)');
 
@@ -52,10 +58,13 @@ export const BookDetails = ({ bookDetails }) => {
     },
   };
 
+  const handleButtonClick = () => {
+    handleAddItem(bookDetails, currentUser.userId);
+  };
+
   const mobileLayout = () => {
     return (
-      <>
-        {' '}
+      <CartProvider>
         <div className='back-button-container'>
           <Button onClick={handleRedirect} sx={{ ...backButtonStyles }}>
             <ArrowBackIcon />
@@ -89,6 +98,7 @@ export const BookDetails = ({ bookDetails }) => {
                   precision={0.5}
                 />
               </div>
+              <div className='book-details-price'>${bookDetails.price}</div>
               <div className='book-details-buy'>
                 <Button sx={{ ...cartButtonStyles }}>
                   <AddShoppingCartIcon />
@@ -110,7 +120,7 @@ export const BookDetails = ({ bookDetails }) => {
             </div>
           </div>
         </div>
-      </>
+      </CartProvider>
     );
   };
 
@@ -138,8 +148,12 @@ export const BookDetails = ({ bookDetails }) => {
                   precision={0.5}
                 />
               </div>
+              <div className='book-details-price'>${bookDetails.price}</div>
               <div className='book-details-buy'>
-                <Button sx={{ ...cartButtonStyles }}>
+                <Button
+                  onClick={handleButtonClick}
+                  sx={{ ...cartButtonStyles }}
+                >
                   <AddShoppingCartIcon />
                   Add to cart
                 </Button>
