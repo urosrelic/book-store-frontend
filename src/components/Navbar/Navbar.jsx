@@ -4,6 +4,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { Sidebar } from '../Sidebar/Sidebar';
@@ -64,14 +65,25 @@ export const Navbar = () => {
                 <DashboardIcon sx={{ ...iconStyles }} />
               </Link>
             </div>
+            <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
+              <Link to='/cart'>
+                <div className='navbar-cart'>
+                  <ShoppingCartIcon
+                    className='cart-icon'
+                    sx={{ ...iconStyles }}
+                  />
+                  <div className='navbar-cart-item-count'>0</div>
+                </div>
+              </Link>
+            </div>
             <div
               className={sticky ? 'navbar-link sticky' : 'navbar-link'}
               onClick={handleLogout}
             >
               <Link to='/'>
                 <LogoutIcon sx={{ ...iconStyles }} />
+                Logout
               </Link>
-              Logout
             </div>
           </>
         ) : (
