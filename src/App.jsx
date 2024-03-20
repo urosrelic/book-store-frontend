@@ -10,6 +10,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthProvider';
 import { Book } from './pages/Book/Book';
 import { Books } from './pages/Books/Books';
+import { Cart } from './pages/Cart/Cart';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route element={<PrivateRoutes />}>
               <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/cart' element={<Cart />} />
             </Route>
             <Route path='/books' element={<Books />} />
             <Route path='/books/book/:bookId' element={<Book />} />{' '}
