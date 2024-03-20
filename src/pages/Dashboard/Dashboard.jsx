@@ -1,4 +1,4 @@
-import { UserDetails } from '../../components/UserComponents/UserDetails/UserDetails';
+import { UserDetails } from '../../components/UserDetails/UserDetails';
 
 import './Dashboard.css';
 

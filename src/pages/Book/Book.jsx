@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { BookDetails } from '../../components/BookComponents/BookDetails/BookDetails';
+import { BookDetails } from '../../components/BookDetails/BookDetails';
 import { useBookDetails } from '../../hooks/useBookDetails';
 
 import './Book.css';
