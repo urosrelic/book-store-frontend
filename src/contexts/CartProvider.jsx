@@ -48,6 +48,7 @@ export const CartProvider = ({ children }) => {
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
       addCartCookie(updatedCartItems);
+      alert('Item already in cart, updated the quantity');
     } else {
       // If the item doesn't exist in the cart, add it
       const newItem = { bookDetails, quantity: 1 };
@@ -55,6 +56,7 @@ export const CartProvider = ({ children }) => {
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
       addCartCookie(updatedCartItems);
+      alert('Item added succesfully');
     }
   };
 
