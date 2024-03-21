@@ -100,7 +100,10 @@ export const BookDetails = ({ bookDetails }) => {
               </div>
               <div className='book-details-price'>${bookDetails.price}</div>
               <div className='book-details-buy'>
-                <Button sx={{ ...cartButtonStyles }}>
+                <Button
+                  sx={{ ...cartButtonStyles }}
+                  onClick={handleButtonClick}
+                >
                   <AddShoppingCartIcon />
                   Add to cart
                 </Button>
