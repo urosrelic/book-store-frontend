@@ -73,7 +73,7 @@ export const CartProvider = ({ children }) => {
       : removeCartCookie();
   };
 
-  const totalAmount = useMemo(() => {
+  const subtotalAmount = useMemo(() => {
     const amount = cartItems.reduce(
       (total, item) => total + item.quantity * item.bookDetails.price,
       0
@@ -126,7 +126,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cartItems,
         cartCount,
-        totalAmount,
+        subtotalAmount,
         handleAddItem,
         increaseQuantity,
         decreaseQuantity,

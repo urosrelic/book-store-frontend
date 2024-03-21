@@ -1,15 +1,19 @@
 import './Cart.css';
 
 import { Button } from '@mui/material';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useCart } from '../../hooks/useCart';
 export const Cart = () => {
-  const { cartItems, totalAmount } = useCart();
+  const { cartItems, subtotalAmount } = useCart();
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, []);
+  // useEffect(() => {
+  //   console.log(cartItems);
+  // }, []);
+
+  const totalAmount = useMemo(() => {
+    return subtotalAmount + 5;
+  }, [subtotalAmount]);
 
   const buttonStyles = {
     width: '100%',
@@ -44,7 +48,7 @@ export const Cart = () => {
             <table>
               <tr>
                 <td>Subtotal</td>
-                <td>${totalAmount}</td>
+                <td>${subtotalAmount}</td>
               </tr>
               <tr>
                 <td>Tax</td>
@@ -52,7 +56,7 @@ export const Cart = () => {
               </tr>
               <tr>
                 <td>Total</td>
-                <td>${totalAmount + 5}</td>
+                <td>${totalAmount}</td>
               </tr>
               <tr>
                 <td>
