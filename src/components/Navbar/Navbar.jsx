@@ -4,8 +4,10 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useCart } from '../../hooks/useCart';
 import { Sidebar } from '../Sidebar/Sidebar';
 
 import { useMediaQuery } from '@uidotdev/usehooks';
@@ -14,9 +16,14 @@ import './Navbar.css';
 
 export const Navbar = () => {
   const { isAuthenticated, handleLogout } = useAuth();
+  const { cartCount } = useCart();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isWideScreen = useMediaQuery('only screen and (min-width: 1024px)');
+
+  useEffect(() => {
+    console.log(cartCount);
+  });
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -64,14 +71,25 @@ export const Navbar = () => {
                 <DashboardIcon sx={{ ...iconStyles }} />
               </Link>
             </div>
+            <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
+              <Link to='/cart'>
+                <div className='navbar-cart'>
+                  <ShoppingCartIcon
+                    className='cart-icon'
+                    sx={{ ...iconStyles }}
+                  />
+                  <div className='navbar-cart-item-count'>{cartCount}</div>
+                </div>
+              </Link>
+            </div>
             <div
               className={sticky ? 'navbar-link sticky' : 'navbar-link'}
               onClick={handleLogout}
             >
               <Link to='/'>
                 <LogoutIcon sx={{ ...iconStyles }} />
+                Logout
               </Link>
-              Logout
             </div>
           </>
         ) : (

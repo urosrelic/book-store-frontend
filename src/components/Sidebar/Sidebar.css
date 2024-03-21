@@ -18,6 +18,41 @@
 }
 
 .sidebar-close-btn {
+  padding: 1rem 0;
+  font-size: 2rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-cart {
+  padding: 0.8rem;
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.sidebar-cart a {
+  text-decoration: none;
+  color: #3aafa9;
+}
+
+.cart-item-count {
+  font-size: 1rem;
+  border-radius: 50%;
+  color: #3aafa9;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.sidebar-close-btn.auth {
   width: 100%;
   height: auto;
   display: flex;

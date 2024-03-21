@@ -16,9 +16,11 @@
 
 .navbar-links {
   display: none;
+  height: 100%;
 }
 
 .navbar-link {
+  height: 100%;
   margin-left: 1rem;
   display: flex;
   flex-direction: row;
@@ -31,7 +33,12 @@
 }
 
 .navbar-link * {
+  display: flex;
+  align-items: center;
   color: #3aafa9;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .navbar-link.sticky {
@@ -52,7 +59,11 @@
   transition: color 0.3s ease-in-out;
 }
 
-.navbar-title {
+.navbar-cart {
+  display: flex;
+}
+
+.navbar-cart-item-count .navbar-title {
   color: #ffffff;
   font-weight: 500;
 }

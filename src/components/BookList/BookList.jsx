@@ -5,7 +5,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 import { BookItem } from '../BookItem/BookItem';
 
-import { useBooks } from '../../../hooks/useBooks';
+import { useBooks } from '../../hooks/useBooks';
 
 import { Button } from '@mui/material';
 import './BookList.css';

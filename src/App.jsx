@@ -8,29 +8,34 @@ import { PrivateRoutes } from './utils/PrivateRoutes';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthProvider';
+import { CartProvider } from './contexts/CartProvider';
 import { Book } from './pages/Book/Book';
 import { Books } from './pages/Books/Books';
+import { Cart } from './pages/Cart/Cart';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
     <AuthProvider>
-      <div className='App'>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route element={<PrivateRoutes />}>
-              <Route path='/dashboard' element={<Dashboard />} />
-            </Route>
-            <Route path='/books' element={<Books />} />
-            <Route path='/books/book/:bookId' element={<Book />} />{' '}
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </div>
+      <CartProvider>
+        <div className='App'>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route element={<PrivateRoutes />}>
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/cart' element={<Cart />} />
+              </Route>
+              <Route path='/books' element={<Books />} />
+              <Route path='/books/book/:bookId' element={<Book />} />{' '}
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </div>
+      </CartProvider>
     </AuthProvider>
   );
 }

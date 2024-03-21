@@ -6,21 +6,42 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useAuth } from '../../hooks/useAuth';
 import { NavItem } from '../NavItem/NavItem';
 
+import { Link } from 'react-router-dom';
+import { useCart } from '../../hooks/useCart';
 import './Sidebar.css';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { isAuthenticated } = useAuth();
+  const { cartCount } = useCart();
+
+  const cartIconStyles = {
+    fontSize: '2.3rem',
+  };
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
-          <h1 className='sidebar-title'>
-            book<span>store</span>
-          </h1>
+          {isAuthenticated ? (
+            <div className='sidebar-cart' onClick={onClose}>
+              <Link to='/cart'>
+                <ShoppingCartIcon
+                  className='cart-icon'
+                  sx={{ ...cartIconStyles }}
+                />
+              </Link>
+              <div className='cart-item-count'>{cartCount}</div>
+            </div>
+          ) : (
+            <div className='sidebar-title'>
+              book<span>store</span>
+            </div>
+          )}
+
           <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
 

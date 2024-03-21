@@ -123,3 +123,12 @@
   font-size: 1.1rem;
   line-height: 25px;
 }
+
+/* PRICE */
+.book-details-price {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}

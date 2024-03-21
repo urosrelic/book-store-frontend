@@ -1,4 +1,4 @@
-import { BookList } from '../../components/BookComponents/BookList/BookList';
+import { BookList } from '../../components/BookList/BookList';
 
 import './Books.css';
 

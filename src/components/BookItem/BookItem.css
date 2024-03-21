@@ -22,8 +22,18 @@
 
 .book-item-title,
 .book-item-author,
-.book-item-categories {
+.book-item-categories,
+.book-item-price {
   padding: 1rem;
+}
+
+.book-item-price {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #17242a;
+  font-weight: 600;
 }
 
 .book-item-title {
