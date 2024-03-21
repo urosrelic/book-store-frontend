@@ -30,10 +30,10 @@ export const Cart = () => {
               <th>Quantity</th>
               <th>Subtotal</th>
             </tr>
-            {cartItems.map((item, index) => {
+            {cartItems.map((item) => {
               return (
                 <CartItem
-                  key={index}
+                  key={item.bookDetails.bookId}
                   bookDetails={item.bookDetails}
                   quantity={item.quantity}
                 />
