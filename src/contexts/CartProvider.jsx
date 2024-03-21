@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
 export const CartContext = createContext();
 
@@ -73,13 +73,65 @@ export const CartProvider = ({ children }) => {
       : removeCartCookie();
   };
 
+  const totalAmount = useMemo(() => {
+    const amount = cartItems.reduce(
+      (total, item) => total + item.quantity * item.bookDetails.price,
+      0
+    );
+
+    return Math.round(amount * 100) / 100;
+  }, [cartItems]);
+
+  const handleQuantityChange = (bookDetails, newQuantity) => {
+    const updatedCartItems = cartItems.map((item) =>
+      item.bookDetails.bookId === bookDetails.bookId &&
+      item.userId === bookDetails.userId
+        ? { ...item, quantity: newQuantity }
+        : item
+    );
+    setCartItems(updatedCartItems);
+    addCartCookie(updatedCartItems);
+  };
+
+  const increaseQuantity = (bookDetails) => {
+    const existingItem = cartItems.find(
+      (item) =>
+        item.bookDetails.bookId === bookDetails.bookId &&
+        item.userId === bookDetails.userId
+    );
+
+    if (existingItem) {
+      const newQuantity = existingItem.quantity + 1;
+      handleQuantityChange(bookDetails, newQuantity);
+    }
+  };
+
+  const decreaseQuantity = (bookDetails) => {
+    const existingItem = cartItems.find(
+      (item) =>
+        item.bookDetails.bookId === bookDetails.bookId &&
+        item.userId === bookDetails.userId
+    );
+
+    if (existingItem) {
+      const newQuantity = existingItem.quantity - 1;
+      newQuantity > 0
+        ? handleQuantityChange(bookDetails, newQuantity)
+        : handleRemoveItem(bookDetails);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         cartCount,
+        totalAmount,
         handleAddItem,
+        increaseQuantity,
+        decreaseQuantity,
         handleRemoveItem,
+        handleQuantityChange,
       }}
     >
       {children}

@@ -114,6 +114,10 @@ body {
   .book-details-img img {
     width: 70%;
   }
+
+  .total-price table {
+    width: 20%;
+  }
 }
 
 /* LAPTOPS */
