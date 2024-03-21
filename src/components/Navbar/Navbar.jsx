@@ -16,7 +16,7 @@ import './Navbar.css';
 
 export const Navbar = () => {
   const { isAuthenticated, handleLogout } = useAuth();
-  const { cartCount } = useCart();
+  const { cartCount, removeCartCookie } = useCart();
   const [sticky, setSticky] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isWideScreen = useMediaQuery('only screen and (min-width: 1024px)');
@@ -27,6 +27,11 @@ export const Navbar = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogoutClick = () => {
+    handleLogout();
+    removeCartCookie();
   };
 
   useEffect(() => {
@@ -84,7 +89,7 @@ export const Navbar = () => {
             </div>
             <div
               className={sticky ? 'navbar-link sticky' : 'navbar-link'}
-              onClick={handleLogout}
+              onClick={() => handleLogoutClick()}
             >
               <Link to='/'>
                 <LogoutIcon sx={{ ...iconStyles }} />
@@ -94,10 +99,7 @@ export const Navbar = () => {
           </>
         ) : (
           <>
-            <div
-              className={sticky ? 'navbar-link sticky' : 'navbar-link'}
-              onClick={handleLogout}
-            >
+            <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
               <Link to='/login'>
                 <LoginIcon sx={{ ...iconStyles }} />
               </Link>
