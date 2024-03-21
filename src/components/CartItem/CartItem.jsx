@@ -29,12 +29,12 @@ export const CartItem = ({ bookDetails, quantity }) => {
               <span>${bookDetails.price}</span>
 
               <br></br>
-              <div
+              <span
                 className='cart-remove-item-btn'
                 onClick={() => handleRemoveItem(bookDetails)}
               >
                 Remove
-              </div>
+              </span>
             </div>
           </div>
         </td>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../Button.styled';
 
+import { Button } from '@mui/material';
 import './BookItem.css';
 export const BookItem = ({
   bookId,
@@ -19,6 +19,14 @@ export const BookItem = ({
 
   const buttonStyles = {
     width: '50%',
+    padding: '0.5srem',
+    fontSize: '1rem',
+    backgroundColor: '#17242a',
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#fff',
+      color: '#17242a',
+    },
   };
 
   return (
@@ -30,7 +38,7 @@ export const BookItem = ({
       <span className='book-item-author'>{authors}</span>
       <span className='book-item-categories'>Genres: {genres}</span>
       <span className='book-item-price'>${price}</span>
-      <Button styles={buttonStyles} onClick={handleClick}>
+      <Button sx={{ ...buttonStyles }} onClick={handleClick}>
         See details
       </Button>
     </div>
