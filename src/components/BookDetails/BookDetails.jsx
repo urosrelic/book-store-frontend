@@ -19,7 +19,7 @@ import { useCart } from '../../hooks/useCart';
 export const BookDetails = ({ bookDetails }) => {
   const navigate = useNavigate();
   const { handleAddItem } = useCart();
-  const { currentUser } = useAuth();
+  const { isAuthenticated, currentUser } = useAuth();
 
   const isWideScreen = useMediaQuery('only screen and (min-width: 768px)');
 
@@ -59,6 +59,9 @@ export const BookDetails = ({ bookDetails }) => {
   };
 
   const handleButtonClick = () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
     handleAddItem(bookDetails, currentUser.userId);
   };
 
