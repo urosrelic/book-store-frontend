@@ -1,13 +1,19 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { useMemo } from 'react';
 import { useCart } from '../../hooks/useCart';
 import './CartItem.css';
 export const CartItem = ({ bookDetails, quantity }) => {
-  const { increaseQuantity, decreaseQuantity } = useCart();
+  const { increaseQuantity, decreaseQuantity, handleRemoveItem } = useCart();
+
   const iconStyles = {
     color: '#17242a',
     cursor: 'pointer',
   };
+
+  const subtotal = useMemo(() => {
+    return Math.round(quantity * bookDetails.price * 100) / 100;
+  }, [quantity]);
 
   return (
     <>
@@ -20,7 +26,15 @@ export const CartItem = ({ bookDetails, quantity }) => {
             <div className='cart-details'>
               <span>{bookDetails.title}</span>
               <br></br>
-              <a href='#'>Remove</a>
+              <span>${bookDetails.price}</span>
+
+              <br></br>
+              <div
+                className='cart-remove-item-btn'
+                onClick={() => handleRemoveItem(bookDetails)}
+              >
+                Remove
+              </div>
             </div>
           </div>
         </td>
@@ -37,7 +51,7 @@ export const CartItem = ({ bookDetails, quantity }) => {
             />
           </div>
         </td>
-        <td>${bookDetails.price}</td>
+        <td>${subtotal}</td>
       </tr>
     </>
   );
