@@ -25,6 +25,8 @@ export const CartProvider = ({ children }) => {
 
   const removeCartCookie = () => {
     Cookies.remove('cart_token');
+    setCartItems([]);
+    setCartCount(0);
   };
 
   const readCartCookie = () => {
@@ -134,6 +136,7 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         handleRemoveItem,
         handleQuantityChange,
+        removeCartCookie,
       }}
     >
       {children}
