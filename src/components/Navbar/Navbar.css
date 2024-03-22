@@ -25,29 +25,26 @@
   display: flex;
   flex-direction: row;
   padding: 0.6rem;
-  background-color: #17242a;
   text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
 .navbar-link * {
   display: flex;
   align-items: center;
-  color: #3aafa9;
+  color: #17242a;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 900;
 }
 
 .navbar-link.sticky {
-  color: #17242a;
-  background-color: #3aafa9;
+  color: #3aafa9;
 }
 
 .navbar-link.sticky * {
-  color: #17242a;
+  color: #3aafa9;
 }
 
 .navbar.sticky {

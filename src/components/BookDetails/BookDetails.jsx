@@ -46,15 +46,13 @@ export const BookDetails = ({ bookDetails }) => {
   };
 
   const cartButtonStyles = {
+    padding: '1rem',
+    fontSize: '1.2rem',
     backgroundColor: '#17242a',
-    color: 'white',
+    color: '#fff',
     '&:hover': {
-      color: '#3aafa9',
-      backgroundColor: '#17242a', // Keep the same background color on hover
-    },
-    '&:focus': {
-      color: '#3aafa9', // Keep the same background color on hover
-      backgroundColor: '#17242a',
+      backgroundColor: '#fff',
+      color: '#17242a',
     },
   };
 

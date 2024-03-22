@@ -46,8 +46,9 @@ export const Navbar = () => {
   }, []);
 
   const iconStyles = {
-    fontSize: '1.5rem',
+    fontSize: '2rem',
     color: '#17242a',
+    cursor: 'pointer',
   };
 
   return (
@@ -102,6 +103,7 @@ export const Navbar = () => {
             <div className={sticky ? 'navbar-link sticky' : 'navbar-link'}>
               <Link to='/login'>
                 <LoginIcon sx={{ ...iconStyles }} />
+                Login
               </Link>
             </div>
           </>

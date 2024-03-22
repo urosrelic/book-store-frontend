@@ -63,3 +63,7 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.cart-remove-item-btn * {
+  width: 100%;
+}
