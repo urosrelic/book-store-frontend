@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import { createContext, useEffect, useMemo, useState } from 'react';
 
@@ -6,6 +7,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const cartToken = readCartCookie();
@@ -125,12 +127,30 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const handleCheckout = async (data) => {
+    try {
+      const response = await axios.post('/api/order/place_order', data);
+      if (response.status === 201) {
+        console.log('Order placed successfully');
+        alert('Order placed successfully');
+        setCartItems([]);
+        setCartCount(0);
+        removeCartCookie();
+      } else {
+        console.error('Failed to place order');
+      }
+    } catch (error) {
+      setError(`Error ${error.response.status}: ${error.response.data}`);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         cartCount,
         subtotalAmount,
+        handleCheckout,
         handleAddItem,
         increaseQuantity,
         decreaseQuantity,
