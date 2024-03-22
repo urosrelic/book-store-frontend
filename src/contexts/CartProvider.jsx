@@ -1,6 +1,5 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 
 export const CartContext = createContext();
 
@@ -8,32 +7,6 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    const cartToken = readCartCookie();
-    if (cartToken) {
-      const storedCartItems = JSON.parse(cartToken);
-      setCartItems(storedCartItems);
-      setCartCount(storedCartItems.length);
-    }
-  }, []);
-
-  const addCartCookie = (items) => {
-    let inFifteenMinutes = new Date(new Date().getTime() + 15 * 60 * 1000);
-    Cookies.set('cart_token', JSON.stringify(items), {
-      expires: inFifteenMinutes,
-    });
-  };
-
-  const removeCartCookie = () => {
-    Cookies.remove('cart_token');
-    setCartItems([]);
-    setCartCount(0);
-  };
-
-  const readCartCookie = () => {
-    return Cookies.get('cart_token');
-  };
 
   const handleAddItem = (bookDetails) => {
     const existingItemIndex = cartItems.findIndex(
@@ -51,7 +24,6 @@ export const CartProvider = ({ children }) => {
       );
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
-      addCartCookie(updatedCartItems);
       alert('Item already in cart, updated the quantity');
     } else {
       // If the item doesn't exist in the cart, add it
@@ -59,7 +31,6 @@ export const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems, newItem];
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
-      addCartCookie(updatedCartItems);
       alert('Item added succesfully');
     }
   };
@@ -74,9 +45,6 @@ export const CartProvider = ({ children }) => {
     );
     setCartItems(updatedCartItems);
     setCartCount(updatedCartItems.length);
-    updatedCartItems.length > 0
-      ? addCartCookie(updatedCartItems)
-      : removeCartCookie();
   };
 
   const subtotalAmount = useMemo(() => {
@@ -135,7 +103,6 @@ export const CartProvider = ({ children }) => {
         alert('Order placed successfully');
         setCartItems([]);
         setCartCount(0);
-        removeCartCookie();
       } else {
         console.error('Failed to place order');
       }
@@ -157,7 +124,6 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         handleRemoveItem,
         handleQuantityChange,
-        removeCartCookie,
       }}
     >
       {children}
