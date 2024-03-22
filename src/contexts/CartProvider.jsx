@@ -129,7 +129,7 @@ export const CartProvider = ({ children }) => {
 
   const handleCheckout = async (data) => {
     try {
-      const response = await axios.post('/api/order/place_order', data);
+      const response = await axios.post('/api/purchases/place_purchase', data);
       if (response.status === 201) {
         console.log('Order placed successfully');
         alert('Order placed successfully');

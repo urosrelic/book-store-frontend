@@ -10,7 +10,7 @@ export const usePurchase = (id) => {
 
   const fetchPurchaseByUser = async () => {
     try {
-      const response = await axios.get('/api/order/get_orders', {
+      const response = await axios.get('/api/purchases/get_purchases', {
         params: { userId: id },
       });
       setPurchases(response.data);
