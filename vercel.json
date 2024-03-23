@@ -1,0 +1,13 @@
+{
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/api/(.*)",
+      "dest": "https://book-store-backend-production-4e2d.up.railway.app/$1",
+      "headers": {
+        "Host": "book-store-backend-production-4e2d.up.railway.app"
+      }
+    },
+    { "src": ".*", "dest": "/index.html" }
+  ]
+}
