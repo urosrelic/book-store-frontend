@@ -2,10 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button.styled';
-import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { InputField } from '../../components/InputField.styled';
 import { useAuth } from '../../hooks/useAuth';
 
+import toast from 'react-hot-toast';
 import './Login.css';
 
 export const Login = () => {
@@ -16,7 +16,6 @@ export const Login = () => {
     password: '',
   });
   const [errors, setErrors] = useState({});
-  const [responseError, setResponseError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,7 +63,7 @@ export const Login = () => {
 
         if (response.status === 200) {
           console.log('User logged in successfully');
-          alert('User logged in successfully');
+          toast.success('User logged in successfully');
           handleLogin(response.data);
           navigate('/');
         } else {
@@ -72,7 +71,7 @@ export const Login = () => {
         }
       } catch (error) {
         console.error('Error: ', error);
-        setResponseError('Error: ' + error.response.data);
+        toast.error('Error: ' + error.response.data);
       }
     }
   };
@@ -100,7 +99,6 @@ export const Login = () => {
           errorMessage={errors.password}
         />
         <Button type='submit'>Submit</Button>
-        <ErrorMessage message={responseError} />
         <p className='login-to-register-text'>
           Don&apos;t have an account? <br />
           Click{' '}

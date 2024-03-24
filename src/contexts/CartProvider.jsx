@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export const CartContext = createContext();
 
@@ -24,14 +25,14 @@ export const CartProvider = ({ children }) => {
       );
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
-      alert('Item already in cart, updated the quantity');
+      toast.success('Item already in cart, updated the quantity');
     } else {
       // If the item doesn't exist in the cart, add it
       const newItem = { bookDetails, quantity: 1 };
       const updatedCartItems = [...cartItems, newItem];
       setCartItems(updatedCartItems);
       setCartCount(updatedCartItems.length);
-      alert('Item added succesfully');
+      toast.success('Item added succesfully');
     }
   };
 
@@ -45,6 +46,7 @@ export const CartProvider = ({ children }) => {
     );
     setCartItems(updatedCartItems);
     setCartCount(updatedCartItems.length);
+    toast.success('Item removed succesfully');
   };
 
   const subtotalAmount = useMemo(() => {
@@ -64,7 +66,6 @@ export const CartProvider = ({ children }) => {
         : item
     );
     setCartItems(updatedCartItems);
-    addCartCookie(updatedCartItems);
   };
 
   const increaseQuantity = (bookDetails) => {
@@ -100,14 +101,16 @@ export const CartProvider = ({ children }) => {
       const response = await axios.post('/api/purchases/place_purchase', data);
       if (response.status === 201) {
         console.log('Order placed successfully');
-        alert('Order placed successfully');
+        toast.success('Order placed successfully');
         setCartItems([]);
         setCartCount(0);
       } else {
         console.error('Failed to place order');
+        toast.error('Failed to place order');
       }
     } catch (error) {
       setError(`Error ${error.response.status}: ${error.response.data}`);
+      toast.error(`Error ${error.response.status}: ${error.response.data}`);
     }
   };
 

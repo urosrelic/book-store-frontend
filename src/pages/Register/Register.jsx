@@ -2,10 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button.styled';
-import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { InputField } from '../../components/InputField.styled';
 import { useAuth } from '../../hooks/useAuth';
 
+import toast from 'react-hot-toast';
 import './Register.css';
 
 export const Register = () => {
@@ -19,7 +19,6 @@ export const Register = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [responseError, setResponseError] = useState('');
 
   const navigate = useNavigate();
 
@@ -75,14 +74,14 @@ export const Register = () => {
         const response = await axios.post('/api/auth/register', formData);
         if (response.status === 201) {
           console.log('User registered successfully');
-          alert('User registered successfully');
+          toast.success('User registered successfully');
           navigate('/login');
         } else {
           console.error('Failed to register user');
         }
       } catch (error) {
         console.error('Error:', error);
-        setResponseError('Error: ' + error.response.data);
+        toast.error('Error: ' + error.response.data);
       }
     }
   };
@@ -127,7 +126,6 @@ export const Register = () => {
           onChange={handleInputChange}
           errorMessage={errors.confirmPassword}
         />
-        <ErrorMessage message={responseError} />
         <Button type='submit'>Register</Button>
         <p className='register-to-login-text'>
           Already have an account? <br />
