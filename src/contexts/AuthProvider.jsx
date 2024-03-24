@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { createContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export const AuthContext = createContext();
 
@@ -46,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setCurrentUser(null);
     setError(''); // Clear any previous errors on logout
+    toast.success('User logged out');
   };
 
   return (
