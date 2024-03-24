@@ -23,11 +23,15 @@ export const BookList = () => {
 
   return (
     <div className='book-list-container'>
+      {loading && (
+        <div className='book-list-loading'>
+          <h1>Loading books ...</h1>
+        </div>
+      )}
+
       <div className='book-list'>
         {error ? (
           <h1>{error}</h1>
-        ) : loading ? (
-          <h1>Loading data</h1>
         ) : (
           books && books.map((book) => <BookItem key={book.bookId} {...book} />)
         )}

@@ -18,6 +18,11 @@
   gap: 1.5rem;
 }
 
+.book-details-loading {
+  width: 100%;
+  text-align: center;
+}
+
 .book-pagination {
   width: 100%;
   display: flex;

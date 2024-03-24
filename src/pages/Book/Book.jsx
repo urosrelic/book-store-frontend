@@ -20,7 +20,7 @@ export const Book = () => {
         <BookDetails bookDetails={bookDetails} />
       ) : loading ? (
         <div className='book-details-loading'>
-          <h1></h1>
+          <h1>Loading book details...</h1>
         </div>
       ) : (
         <div className='book-details-error'>{error}</div>

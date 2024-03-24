@@ -7,3 +7,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.book-details-loading {
+  width: 100%;
+  text-align: center;
+}
