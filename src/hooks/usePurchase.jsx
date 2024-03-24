@@ -9,14 +9,18 @@ export const usePurchase = (id) => {
   const [error, setError] = useState('');
 
   const fetchPurchaseByUser = async () => {
+    setLoading(true);
     try {
       const response = await axios.get('/api/purchases/get_purchases', {
         params: { userId: id },
       });
       setPurchases(response.data);
       console.log(response.data);
+      setLoading(false);
     } catch (error) {
       setError(`Error ${error.response.status}: ${error.response.data}`);
+    } finally {
+      setLoading(false);
     }
   };
 
