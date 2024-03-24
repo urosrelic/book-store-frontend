@@ -26,21 +26,15 @@ export const Sidebar = ({ isOpen, onClose }) => {
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className='sidebar-content'>
         <div className='sidebar-close-btn'>
-          {isAuthenticated ? (
-            <div className='sidebar-cart' onClick={onClose}>
-              <Link to='/cart'>
-                <ShoppingCartIcon
-                  className='cart-icon'
-                  sx={{ ...cartIconStyles }}
-                />
-              </Link>
-              <div className='cart-item-count'>{cartCount}</div>
-            </div>
-          ) : (
-            <div className='sidebar-title'>
-              book<span>store</span>
-            </div>
-          )}
+          <div className='sidebar-cart' onClick={onClose}>
+            <Link to='/cart'>
+              <ShoppingCartIcon
+                className='cart-icon'
+                sx={{ ...cartIconStyles }}
+              />
+            </Link>
+            <div className='cart-item-count'>{cartCount}</div>
+          </div>
 
           <CancelIcon className='sidebar-close-btn-icon' onClick={onClose} />
         </div>
