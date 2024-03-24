@@ -11,10 +11,12 @@ import { useCart } from '../../hooks/useCart';
 import { Sidebar } from '../Sidebar/Sidebar';
 
 import { useMediaQuery } from '@uidotdev/usehooks';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+
   const { isAuthenticated, handleLogout } = useAuth();
   const { cartCount, removeCartCookie } = useCart();
   const [sticky, setSticky] = useState(false);
@@ -53,7 +55,7 @@ export const Navbar = () => {
 
   return (
     <div className={sticky ? 'navbar sticky' : 'navbar'}>
-      <h1 className='navbar-title'>
+      <h1 className='navbar-title' onClick={() => navigate('/')}>
         book<span>store</span>
       </h1>
 

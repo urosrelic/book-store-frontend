@@ -65,6 +65,10 @@
   font-weight: 500;
 }
 
+.navbar-title {
+  cursor: pointer;
+}
+
 .navbar-title span {
   color: #17242a;
   font-weight: 700;
