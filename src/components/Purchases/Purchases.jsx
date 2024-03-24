@@ -2,14 +2,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import { usePurchase } from '../../hooks/usePurchase';
 
 import { PurchaseItem } from '../PurchaseItem/PurchaseItem';
 import './Purchases.css';
 
-export const Purchases = ({ userId }) => {
-  const { purchases, loading } = usePurchase(userId);
-
+export const Purchases = ({ purchases }) => {
   const accordionProps = {
     width: '100%',
     backgroundColor: '#17242a',
@@ -19,12 +16,7 @@ export const Purchases = ({ userId }) => {
 
   return (
     <div className='user-purchases'>
-      <h2>Purchase History:</h2>
-      {loading ? (
-        <h1>Loading</h1>
-      ) : purchases.length === 0 ? (
-        <p>No purchase history found.</p>
-      ) : (
+      {purchases.length > 0 ? (
         purchases.map((purchase) => (
           <Accordion key={purchase.purchaseId} sx={{ ...accordionProps }}>
             <AccordionSummary
@@ -51,6 +43,8 @@ export const Purchases = ({ userId }) => {
             </AccordionDetails>
           </Accordion>
         ))
+      ) : (
+        <p>No purchase history found.</p>
       )}
     </div>
   );

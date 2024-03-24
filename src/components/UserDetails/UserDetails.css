@@ -19,3 +19,8 @@
   font-size: 6rem;
   color: #17242a;
 }
+
+.user-purchases-loading {
+  width: 100%;
+  text-align: center;
+}
