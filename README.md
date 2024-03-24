@@ -41,6 +41,24 @@ Install dependencies
   npm install
 ```
 
+Change vite.config.js to target localhost or your own url
+
+```bash
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace('/api', ''),
+      },
+    },
+  },
+});
+```
+
 Start the server
 
 ```bash
