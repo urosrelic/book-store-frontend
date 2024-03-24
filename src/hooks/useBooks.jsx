@@ -8,6 +8,11 @@ export const useBooks = (page, pageSize) => {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
+    // Scroll to the top when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
+
+  useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
