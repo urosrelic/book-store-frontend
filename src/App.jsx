@@ -7,7 +7,8 @@ import { PrivateRoutes } from './utils/PrivateRoutes';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import { Toaster } from 'react-hot-toast';
+import { Button } from '@mui/material';
+import { ToastBar, Toaster, toast } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthProvider';
 import { CartProvider } from './contexts/CartProvider';
 import { Book } from './pages/Book/Book';
@@ -18,7 +19,36 @@ import { Dashboard } from './pages/Dashboard/Dashboard';
 function App() {
   return (
     <>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          // Define default options
+          className: '',
+          duration: 1000,
+
+          // Default options for specific types
+          error: {
+            duration: 2000,
+          },
+        }}
+      >
+        {(t) => (
+          <ToastBar toast={t}>
+            {({ icon, message }) => (
+              <>
+                {icon}
+                {message}
+                <Button
+                  onClick={() => toast.dismiss(t.id)}
+                  sx={{ backgroundColor: 'transparent' }}
+                >
+                  X
+                </Button>
+              </>
+            )}
+          </ToastBar>
+        )}
+      </Toaster>
+      ;
       <AuthProvider>
         <CartProvider>
           <div className='App'>
