@@ -21,6 +21,10 @@ You can find the backend project code [here](https://github.com/urosrelic/book-s
 
 https://book-store-frontend-puce.vercel.app/
 
+#### Username: demo
+
+#### Password: demo1234
+
 ## Run Locally
 
 Clone the project
