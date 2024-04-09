@@ -1,4 +1,4 @@
-# Bookstore
+![image](https://github.com/urosrelic/book-store-frontend/assets/72343856/dc38488c-d2f0-4e84-9aff-9ee8f1eded36)
 
 Online book library where users can buy books and see detailed information about them
 
