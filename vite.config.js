@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://book-store-backend-production-4e2d.up.railway.app/',
+        target: 'http://localhost:8080/',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace('/api', ''),
