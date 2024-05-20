@@ -1,20 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button.styled';
 import { InputField } from '../../components/InputField.styled';
 import { useAuth } from '../../hooks/useAuth';
-
-import toast from 'react-hot-toast';
 import './Login.css';
 
 export const Login = () => {
   const { handleLogin, isAuthenticated } = useAuth();
-
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -24,54 +20,51 @@ export const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const handleInputChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'username') {
+      setUsername(value);
+    } else {
+      setPassword(value);
+    }
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.username.trim()) {
+    if (!username.trim()) {
       newErrors.username = 'Username is required';
     }
-
-    if (!formData.password.trim()) {
+    if (!password.trim()) {
       newErrors.password = 'Password is required';
     }
-
     setErrors(newErrors);
-
     return Object.keys(newErrors).length === 0; // Return true if there are no errors
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-
     if (validateForm()) {
       try {
-        const response = await axios.get('/api/auth/login', {
-          params: {
-            username: formData.username,
-            password: formData.password,
-          },
+        const response = await axios.post('/api/public/login', {
+          username,
+          password,
         });
-        console.log(response.data);
 
         if (response.status === 200) {
-          console.log('User logged in successfully');
+          console.log('User logged in successfully', response.data);
           toast.success('User logged in successfully');
           handleLogin(response.data);
           navigate('/');
-        } else {
-          console.error('Incorrect username or password');
         }
       } catch (error) {
-        console.error('Error: ', error);
-        toast.error('Error: ' + error.response.data);
+        if (error.response) {
+          console.log(error.response.data);
+          toast.error('Error: ' + error.response.data);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+          toast.error('Error: ' + error.message);
+        }
       }
     }
   };
@@ -85,7 +78,7 @@ export const Login = () => {
           labelName='Username'
           name='username'
           type='text'
-          value={formData.username}
+          value={username}
           onChange={handleInputChange}
           errorMessage={errors.username}
         />
@@ -94,7 +87,7 @@ export const Login = () => {
           labelName='Password'
           name='password'
           type='password'
-          value={formData.password}
+          value={password}
           onChange={handleInputChange}
           errorMessage={errors.password}
         />
