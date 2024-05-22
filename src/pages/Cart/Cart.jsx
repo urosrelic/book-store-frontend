@@ -23,21 +23,23 @@ export const Cart = () => {
   const purchaseData = {
     purchaseItems: cartItems.map((item) => ({
       book: {
-        bookId: item.bookDetails.bookId,
+        id: item.bookDetails.id,
       },
       quantity: item.quantity,
       price: item.bookDetails.price,
     })),
-    user: {
-      userId: currentUser.userId,
-    },
+    username: currentUser.username,
     subtotalAmount: subtotalAmount,
     tax: tax,
     totalAmount: totalAmount,
   };
 
   const handleButtonClick = (data) => {
-    handleCheckout(data);
+    console.log(data);
+    console.log(currentUser.username);
+    console.log(currentUser.password);
+    console.log(data);
+    handleCheckout(data, currentUser.username, currentUser.password);
   };
 
   const buttonStyles = {

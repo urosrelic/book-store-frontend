@@ -96,9 +96,27 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const handleCheckout = async (data) => {
+  const handleCheckout = async (data, username, password) => {
+    console.log(username);
     try {
-      const response = await axios.post('/api/purchases/place_purchase', data);
+      const response = axios.post(
+        '/api/purchases/private/place-purchase',
+        data,
+        {
+          withCredentials: true,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+        {
+          auth: {
+            username: username.trim(),
+            password: password.trim(),
+          },
+        }
+      );
+
       if (response.status === 201) {
         console.log('Order placed successfully');
         toast.success('Order placed successfully');

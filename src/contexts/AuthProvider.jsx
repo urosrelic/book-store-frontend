@@ -1,6 +1,4 @@
-import Cookies from 'js-cookie';
 import { createContext, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 
 export const AuthContext = createContext();
 
@@ -13,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchAuthData = async () => {
       try {
-        const token = Cookies.get('auth_token');
+        const token = sessionStorage.getItem('auth_token');
         if (token) {
           const parsedUser = JSON.parse(token);
           setIsAuthenticated(true);
@@ -32,22 +30,25 @@ export const AuthProvider = ({ children }) => {
 
   const handleLogin = (user) => {
     try {
-      Cookies.set('auth_token', JSON.stringify(user), { expires: 30 });
+      sessionStorage.setItem('auth_token', JSON.stringify(user));
       setIsAuthenticated(true);
       setCurrentUser(user);
       setError(''); // Clear any previous errors on successful login
     } catch (error) {
       console.error('Error during login:', error);
-      setError('An error occurred during login. Please try again.');
+      setError('An error occurred during login.');
     }
   };
-
   const handleLogout = () => {
-    Cookies.remove('auth_token');
-    setIsAuthenticated(false);
-    setCurrentUser(null);
-    setError(''); // Clear any previous errors on logout
-    toast.success('User logged out');
+    try {
+      sessionStorage.removeItem('auth_token');
+      setIsAuthenticated(false);
+      setCurrentUser(null);
+      setError(''); // Clear any previous errors on successful logout
+    } catch (error) {
+      console.error('Error during logout:', error);
+      setError('An error occurred during logout.');
+    }
   };
 
   return (

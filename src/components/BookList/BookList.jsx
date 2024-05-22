@@ -33,7 +33,7 @@ export const BookList = () => {
         {error ? (
           <h1>{error}</h1>
         ) : (
-          books && books.map((book) => <BookItem key={book.bookId} {...book} />)
+          books && books.map((book) => <BookItem key={book.id} {...book} />)
         )}
       </div>
       <div className='book-pagination'>

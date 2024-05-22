@@ -4,6 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 
 export const PurchaseItem = ({ purchaseItem }) => {
+  console.log(purchaseItem);
   const accordionProps = {
     margin: '0.5rem 0',
     width: '100%',

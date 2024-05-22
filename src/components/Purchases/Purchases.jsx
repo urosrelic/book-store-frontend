@@ -18,14 +18,14 @@ export const Purchases = ({ purchases }) => {
     <div className='user-purchases'>
       {purchases.length > 0 ? (
         purchases.map((purchase) => (
-          <Accordion key={purchase.purchaseId} sx={{ ...accordionProps }}>
+          <Accordion key={purchase.id} sx={{ ...accordionProps }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon sx={{ color: '#ffff' }} />}
               aria-controls='panel1-content'
               id='panel1-header'
             >
               <div className='purchase-information'>
-                <p>Purchase ID: {purchase.purchaseId}</p>
+                <p>Purchase ID: {purchase.id}</p>
                 <span id='purchase-information-date'>
                   Date: {new Date(purchase.date).toLocaleString()}
                 </span>

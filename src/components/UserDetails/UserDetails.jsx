@@ -8,7 +8,7 @@ import { usePurchase } from '../../hooks/usePurchase';
 
 export const UserDetails = () => {
   const { currentUser } = useAuth();
-  const { purchases, loading } = usePurchase(currentUser.userId);
+  const { purchases, loading } = usePurchase(currentUser.username);
 
   // console.log(purchase);
 

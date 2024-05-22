@@ -45,7 +45,7 @@ export const Login = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await axios.post('/api/public/login', {
+        const response = await axios.post('/api/auth/public/login', {
           username,
           password,
         });

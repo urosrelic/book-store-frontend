@@ -2,19 +2,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@mui/material';
 import './BookItem.css';
-export const BookItem = ({
-  bookId,
-  title,
-  authors,
-  genres,
-  imageUrl,
-  price,
-}) => {
+export const BookItem = ({ id, title, authors, genres, imageUrl, price }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log(bookId);
-    navigate(`/books/book/${bookId}`);
+    console.log(id);
+    navigate(`/books/book/${id}`);
   };
 
   const buttonStyles = {
