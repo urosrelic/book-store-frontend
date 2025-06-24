@@ -1,13 +1,11 @@
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig, loadEnv } from 'vite';
 
+/* eslint-env node */
 export default defineConfig(({ mode }) => {
-  // eslint-disable no-undef
 
   const env = loadEnv(mode, process.cwd(), '');
-  // eslint-disable no-undef
   const backendUrl = process.env.VERCEL_URL
-    // eslint-disable no-undef
 
     ? `https://${process.env.VERCEL_URL}`
     : env.VITE_BOOK_STORE_BACKEND_HOST;
