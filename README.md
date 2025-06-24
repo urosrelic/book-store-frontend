@@ -19,7 +19,7 @@ You can find the backend project code [here](https://github.com/urosrelic/book-s
 
 ## Demo
 
-https://book-store-frontend-puce.vercel.app/
+https://book-store-frontend.up.railway.app/
 
 #### Username: demo
 
