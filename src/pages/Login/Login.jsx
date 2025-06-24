@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../utils/api';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button.styled';
@@ -13,7 +13,7 @@ export const Login = () => {
 
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
+    password: ''
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const Login = () => {
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -53,11 +53,11 @@ export const Login = () => {
 
     if (validateForm()) {
       try {
-        const response = await axios.get('/api/auth/login', {
+        const response = await axiosInstance.get('/auth/login', {
           params: {
             username: formData.username,
-            password: formData.password,
-          },
+            password: formData.password
+          }
         });
         console.log(response.data);
 
@@ -79,7 +79,10 @@ export const Login = () => {
   return (
     <div className='login-container'>
       <h1>Login</h1>
-      <form id='login-form' onSubmit={onSubmit}>
+      <form
+        id='login-form'
+        onSubmit={onSubmit}
+      >
         <InputField
           id='username-input'
           labelName='Username'

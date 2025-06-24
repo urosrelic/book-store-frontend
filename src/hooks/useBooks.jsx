@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axiosInstance from '../utils/api';
 
 export const useBooks = (page, pageSize) => {
   const [books, setBooks] = useState(null);
@@ -16,7 +16,7 @@ export const useBooks = (page, pageSize) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`/api/books?page=${page}&size=${pageSize}`);
+        const res = await axiosInstance.get(`/books?page=${page}&size=${pageSize}`);
         setLoading(false);
         setBooks(res.data.content);
         setTotalPages(Math.ceil(res.data.totalElements / pageSize));

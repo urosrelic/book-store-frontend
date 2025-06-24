@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../utils/api';
 import { createContext, useEffect, useState } from 'react';
 
 export const PurchaseContext = createContext();
@@ -11,8 +11,8 @@ export const usePurchase = (id) => {
   const fetchPurchaseByUser = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/purchases/get_purchases', {
-        params: { userId: id },
+      const response = await axiosInstance.get('/purchases/get_purchases', {
+        params: { userId: id }
       });
       setPurchases(response.data);
       console.log(response.data);

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../utils/api';
 import { createContext, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -98,7 +98,7 @@ export const CartProvider = ({ children }) => {
 
   const handleCheckout = async (data) => {
     try {
-      const response = await axios.post('/api/purchases/place_purchase', data);
+      const response = await axiosInstance.post('/purchases/place_purchase', data);
       if (response.status === 201) {
         console.log('Order placed successfully');
         toast.success('Order placed successfully');
@@ -126,7 +126,7 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         handleRemoveItem,
-        handleQuantityChange,
+        handleQuantityChange
       }}
     >
       {children}

@@ -1,9 +1,9 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button.styled';
 import { InputField } from '../../components/InputField.styled';
 import { useAuth } from '../../hooks/useAuth';
+import axiosInstance from '../../utils/api';
 
 import toast from 'react-hot-toast';
 import './Register.css';
@@ -15,7 +15,7 @@ export const Register = () => {
     username: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    confirmPassword: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -31,7 +31,7 @@ export const Register = () => {
   const handleInputChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -71,7 +71,7 @@ export const Register = () => {
 
     if (validateForm()) {
       try {
-        const response = await axios.post('/api/auth/register', formData);
+        const response = await axiosInstance.post('/auth/register', formData);
         if (response.status === 201) {
           console.log('User registered successfully');
           toast.success('User registered successfully');
@@ -89,7 +89,10 @@ export const Register = () => {
   return (
     <div className='register-container'>
       <h1>Register</h1>
-      <form id='register-form' onSubmit={onSubmit}>
+      <form
+        id='register-form'
+        onSubmit={onSubmit}
+      >
         <InputField
           id='username-input'
           labelName='Username'
